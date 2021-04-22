@@ -1,10 +1,11 @@
-import MainPageNavBar from "./MainPageNavBar"
+import EmployeeNavBar from "./EmployeeNavBar"
 import React, {useState} from "react"
 import {useHistory} from "react-router-dom"
 import axios from "axios"
 import "./card.css"
 
 
+//fix the main nav bar here
 
 export default function AnimalPage(){
     var animalName = "Elephant"
@@ -14,7 +15,7 @@ export default function AnimalPage(){
     <div class = "AnimalPage">
 
         <div className="AnimalsPage">
-            <MainPageNavBar />
+            <EmployeeNavBar />
             <h1>Animals in our Zoo</h1>
         </div>
 
