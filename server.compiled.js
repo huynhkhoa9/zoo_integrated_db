@@ -13,17 +13,8 @@ var mysql = require('mysql');
 var app = (0, _express["default"])();
 app.use(_express["default"]["static"](_path["default"].join(__dirname, 'client', 'build'))); // Handles any requests that don't match the ones above
 
-app.get('/', function (req, res) {
-  res.sendFile(_path["default"].join(__dirname, 'client', 'build'));
-});
-app.get('/', function (req, res) {
-  res.send('just gonna send it');
-});
-app.get('/flower', function (req, res) {
-  res.json({
-    name: 'Dandelion',
-    colour: 'Blue-ish'
-  });
+app.get('*', function (req, res) {
+  res.sendFile(_path["default"].join(__dirname + '/client/build/index.html'));
 });
 var connection = mysql.createConnection({
   host: process.env.RDS_HOSTNAME,
