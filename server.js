@@ -2,16 +2,19 @@
 //
 import path from 'path';
 import express from 'express';
+import router from './routes/auth.routes';
 const mysql = require('mysql');
 
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.use("/", router);
 
 // Handles any requests that don't match the ones above
 app.get('*', (req,res) =>{
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
+
 
 var connection = mysql.createConnection({
   host     : process.env.RDS_HOSTNAME,
