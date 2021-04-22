@@ -5,7 +5,7 @@ import "./AddEmployee.css"
 import axios from "axios"
 
 function addemployee(EmployeeFirstName, EmployeeLastName, EmployeeDOB, EmployeeGender, EmployeeSalary, EmployeeDepartment, EmployeeContactInfo, EmployeeSSN, EmployeeSupervisorId, EmployeeId, EmployeePassword){
-    return axios.post("http://zoointegrateddb-env.eba-j24arzz8.us-east-2.elasticbeanstalk.com:8080/api/auth/addemployee", {
+    return axios.post("/api/auth/addemployee", {
         EmployeeFirstName, EmployeeLastName, EmployeeDOB, EmployeeGender, EmployeeSalary, EmployeeDepartment, EmployeeContactInfo, EmployeeSSN, EmployeeSupervisorId, EmployeeId, EmployeePassword
     })
     .then(response => {

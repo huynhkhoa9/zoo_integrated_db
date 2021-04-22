@@ -5,7 +5,7 @@ import "./AddAnimal.css"
 import axios from "axios"
 
 function addanimal(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
-    return axios.post("/addanimal", {
+    return axios.post("/api/auth/addanimal", {
         AnimalId, Species, AnimalDOB, AnimalGender, AnimalName, Habitat
     })
     .then(response => {
