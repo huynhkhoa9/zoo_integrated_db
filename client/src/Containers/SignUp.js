@@ -5,7 +5,7 @@ import axios from "axios"
 import MainPageNavBar from "./MainPageNavBar"
 
 function register(Email, Username, Password) {
-    return axios.post("/api/auth/signup", {
+    return axios.post("http://zoointegrateddb-env.eba-j24arzz8.us-east-2.elasticbeanstalk.com:8080/api/auth/signup", {
         Email,
         Username,
         Password
