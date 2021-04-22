@@ -6,7 +6,7 @@ import "./EmployeeLogin.css"
 
 function employeelogin(EmployeeID, EmployeePassword){
     return axios
-        .post("/employeelogin", {
+        .post("/api/auth/employeesignin", {
             EmployeeID,
             EmployeePassword
         })
@@ -33,7 +33,7 @@ export default function Login(){
 
         employeelogin(EmployeeID, EmployeePassword).then(
             () => {
-                history.push("EmployeeMain");
+                history.push("/EmployeeMain");
             },
             error => {
                 const resMessage = (
