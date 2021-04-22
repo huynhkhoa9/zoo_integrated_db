@@ -10,7 +10,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 //
 var mysql = require('mysql');
 
-var PORT = process.env.PORT || 4001;
+var db = mysql.createPool({
+  host: process.env.RDS_HOSTNAME,
+  user: process.env.RDS_USERNAME,
+  password: process.env.RDS_PASSWORD,
+  database: process.env.RDS_HOSTNAME
+});
+var PORT = process.env.PORT || 8080;
 var app = (0, _express["default"])();
 app.use(_express["default"]["static"](_path["default"].join(__dirname, 'client', 'build')));
 app.get('/', function (req, res) {
@@ -21,6 +27,15 @@ app.get('/flower', function (req, res) {
     name: 'Dandelion',
     colour: 'Blue-ish'
   });
+});
+db.getConnection(function (err, connection) {
+  if (err) {
+    return console.error('error: ' + err.message);
+  } // execute query
+  // ...
+
+
+  connnection.release();
 });
 app.listen(PORT, function () {
   console.log("Server listening at port ".concat(PORT, "."));
