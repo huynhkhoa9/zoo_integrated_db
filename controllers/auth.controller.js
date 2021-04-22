@@ -6,10 +6,10 @@ var bcrypt = require("bcryptjs")
 
 let pool = mysql.createPool({
     connectionLimit: 10,
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'zoo'
+    host: 'aajohs9larexbk.chdju4zwao3b.us-east-2.rds.amazonaws.com',
+    user: 'admin',
+    password: 'UHCougarsCS2021$',
+    database: 'ebdb'
 })
 
 exports.signup = (req, res) => {
