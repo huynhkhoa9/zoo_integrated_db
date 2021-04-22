@@ -13,6 +13,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var mysql = require('mysql');
 
 var app = (0, _express["default"])();
+app.use(cors()); // parse requests of content-type - application/json
+
+app.use(_express["default"].json()); // parse requests of content-type - application/x-www-form-urlencoded
+
+app.use(_express["default"].urlencoded({
+  extended: true
+}));
 app.use(_express["default"]["static"](_path["default"].join(__dirname, 'client', 'build')));
 app.use("/", _auth["default"]); // Handles any requests that don't match the ones above
 
