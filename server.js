@@ -12,10 +12,13 @@ const db = mysql.createPool({
   database:  process.env.RDS_HOSTNAME
 });
 
-const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
+// Handles any requests that don't match the ones above
+app.get('*', (req,res) =>{
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 app.get('/', (req, res) => {
   res.send('just gonna send it');
@@ -37,6 +40,7 @@ db.getConnection(function(err, connection) {
   connnection.release();
 });
 
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server listening at port ${PORT}.`);
 });

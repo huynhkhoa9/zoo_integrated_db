@@ -15,9 +15,12 @@ var mysql = require('mysql');
 var db = mysql.createPool((_mysql$createPool = {
   host: process.env.RDS_HOSTNAME
 }, _defineProperty(_mysql$createPool, "host", process.env.RDS_HOSTNAME), _defineProperty(_mysql$createPool, "user", process.env.RDS_USERNAME), _defineProperty(_mysql$createPool, "password", process.env.RDS_PASSWORD), _defineProperty(_mysql$createPool, "database", process.env.RDS_HOSTNAME), _mysql$createPool));
-var PORT = process.env.PORT || 8080;
 var app = (0, _express["default"])();
-app.use(_express["default"]["static"](_path["default"].join(__dirname, 'client', 'build')));
+app.use(_express["default"]["static"](_path["default"].join(__dirname, 'client', 'build'))); // Handles any requests that don't match the ones above
+
+app.get('*', function (req, res) {
+  res.sendFile(_path["default"].join(__dirname + '/client/build/index.html'));
+});
 app.get('/', function (req, res) {
   res.send('just gonna send it');
 });
@@ -36,6 +39,7 @@ db.getConnection(function (err, connection) {
 
   connnection.release();
 });
+var PORT = process.env.PORT || 8080;
 app.listen(PORT, function () {
   console.log("Server listening at port ".concat(PORT, "."));
 });
