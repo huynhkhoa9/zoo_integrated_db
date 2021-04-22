@@ -1,4 +1,4 @@
-import EmployeeNavBar from "./EmployeeNavBar"
+import HomeNavBar from "./HomeNavBar"
 import React, {useState} from "react"
 import {useHistory} from "react-router-dom"
 import axios from "axios"
@@ -15,7 +15,7 @@ export default function AnimalPage(){
     <div class = "AnimalPage">
 
         <div className="AnimalsPage">
-            <EmployeeNavBar />
+            <HomeNavBar />
             <h1>Animals in our Zoo</h1>
         </div>
 
