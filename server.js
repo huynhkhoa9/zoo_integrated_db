@@ -13,17 +13,6 @@ app.get('/', (req,res) =>{
   res.sendFile(path.join(__dirname, 'client', 'build'));
 });
 
-app.get('/', (req, res) => {
-  res.send('just gonna send it');
-});
-
-app.get('/flower', (req, res) => {
-  res.json({
-    name: 'Dandelion',
-    colour: 'Blue-ish'
-  });
-});
-
 var connection = mysql.createConnection({
   host     : process.env.RDS_HOSTNAME,
   user     : process.env.RDS_USERNAME,
