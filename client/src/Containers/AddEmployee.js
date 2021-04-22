@@ -4,9 +4,29 @@ import EmployeeNavBar from "./EmployeeNavBar"
 import "./AddEmployee.css"
 import axios from "axios"
 
-function addemployee(EmployeeFirstName, EmployeeLastName, EmployeeDOB, EmployeeGender, EmployeeSalary, EmployeeDepartment, EmployeeContactInfo, EmployeeSSN, EmployeeSupervisorId, EmployeeId, EmployeePassword){
+function addemployee(EmployeeFirstName,
+                     EmployeeLastName,
+                     EmployeeDOB,
+                     EmployeeGender, 
+                     EmployeeSalary, 
+                     EmployeeDepartment, 
+                     EmployeeContactInfo, 
+                     EmployeeSSN, 
+                     EmployeeSupervisorId, 
+                     EmployeeId, 
+                     EmployeePassword){
     return axios.post("/api/auth/addemployee", {
-        EmployeeFirstName, EmployeeLastName, EmployeeDOB, EmployeeGender, EmployeeSalary, EmployeeDepartment, EmployeeContactInfo, EmployeeSSN, EmployeeSupervisorId, EmployeeId, EmployeePassword
+        EmployeeFirstName, 
+        EmployeeLastName, 
+        EmployeeDOB, 
+        EmployeeGender,
+        EmployeeSalary, 
+        EmployeeDepartment,
+        EmployeeContactInfo, 
+        EmployeeSSN,
+        EmployeeSupervisorId,
+        EmployeeId,
+        EmployeePassword
     })
     .then(response => {
         return response.data;
@@ -51,6 +71,9 @@ export default function AddEmployee(){
     }
 
     function handleSubmit1(event){
+
+        alert("Adding employee!");
+
         event.preventDefault();
         if(validLength1()){
             addemployee(EmployeeFirstName, EmployeeLastName, EmployeeDOB, EmployeeGender, EmployeeSalary, EmployeeDepartment, EmployeeContactInfo, EmployeeSSN, EmployeeSupervisorId, EmployeeId, EmployeePassword);
