@@ -26,14 +26,10 @@ app.get('/flower', function (req, res) {
   });
 });
 var connection = mysql.createConnection({
-  host: 'aajohs9larexbk.chdju4zwao3b.us-east-2.rds.amazonaws.com',
-  //process.env.RDS_HOSTNAME,
-  user: 'admin',
-  //process.env.RDS_USERNAME,
-  password: 'UHCougarsCS2021$',
-  //process.env.RDS_PASSWORD,
-  port: '3306' //process.env.RDS_PORT
-
+  host: process.env.RDS_HOSTNAME,
+  user: process.env.RDS_USERNAME,
+  password: process.env.RDS_PASSWORD,
+  port: process.env.RDS_PORT
 });
 connection.connect(function (err) {
   if (err) {
