@@ -115,8 +115,6 @@ exports.signin = (req, res) => {
     })
 }
 
-
-
 exports.employeesignin = (req, res) => {
     let valid = true;
     let query = "SELECT Employee_Id, Employee_Password FROM employee WHERE Employee_Id = '" + req.body.EmployeeID + "'"
@@ -185,6 +183,8 @@ exports.addanimal = (req, res) => {
 }
 
 exports.addemployee = (req, res) => {
+    console.log("Adding employee")
+
     var values = "INSERT INTO employee (Employee_FirstName, Employee_LastName, Employee_DOB, Employee_Gender, Employee_Salary, Employee_Department, Employee_ContactInfo, Employee_SSN, Employee_SupervisorId, Employee_Id, Employee_Password) VALUES ('" + req.body.EmployeeFirstName + "', '" + req.body.EmployeeLastName + "', '" + req.body.EmployeeDOB + "', '" + req.body.EmployeeGender + "', '" + req.body.EmployeeSalary + "', '" + req.body.EmployeeDepartment + "', '" + req.body.EmployeeContactInfo + "', '" + req.body.EmployeeSSN + "', '" + req.body.EmployeeSupervisorId + "', '" + req.body.EmployeeId + "', '" + req.body.EmployeePassword + "')"
     pool.getConnection(function(err, connection){
         if(err) throw err;

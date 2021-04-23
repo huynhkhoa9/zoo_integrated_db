@@ -5,7 +5,7 @@ import "./AddRevenue.css"
 import axios from "axios"
 
 function addrevenue(TicketSales, GiftShopSales, RestaurantSales, FoodStallSales, Date, TotalSales){
-    return axios.post("/addrevenue", {
+    return axios.post("/api/auth/addrevenue", {
         TicketSales, GiftShopSales, RestaurantSales, FoodStallSales, Date, TotalSales
     })
     .then(response => {
