@@ -19,7 +19,8 @@ app.use(_express["default"].json()); // parse requests of content-type - applica
 app.use(_express["default"].urlencoded({
   extended: true
 }));
-app.use("/", _auth["default"]);
+app.use('/', _auth["default"]);
+app.use('*', _auth["default"]);
 app.use(_express["default"]["static"](_path["default"].join(__dirname, 'client', 'build'))); // Handles any requests that don't match the ones above
 
 app.get('*', function (req, res) {

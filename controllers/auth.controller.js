@@ -183,8 +183,6 @@ exports.addanimal = (req, res) => {
 }
 
 exports.addemployee = (req, res) => {
-    console.log("Adding employee")
-
     var values = "INSERT INTO employee (Employee_FirstName, Employee_LastName, Employee_DOB, Employee_Gender, Employee_Salary, Employee_Department, Employee_ContactInfo, Employee_SSN, Employee_SupervisorId, Employee_Id, Employee_Password) VALUES ('" + req.body.EmployeeFirstName + "', '" + req.body.EmployeeLastName + "', '" + req.body.EmployeeDOB + "', '" + req.body.EmployeeGender + "', '" + req.body.EmployeeSalary + "', '" + req.body.EmployeeDepartment + "', '" + req.body.EmployeeContactInfo + "', '" + req.body.EmployeeSSN + "', '" + req.body.EmployeeSupervisorId + "', '" + req.body.EmployeeId + "', '" + req.body.EmployeePassword + "')"
     pool.getConnection(function(err, connection){
         if(err) throw err;
@@ -197,7 +195,7 @@ exports.addemployee = (req, res) => {
 }
 
 exports.addrevenue = (req, res) => {
-    var values = "INSERT INTO revenue (Ticket_Sales, Gift_Shop_Sales, Restaurant_Sales, Food_Stall_Sales, Sales_Date, Total_Sales) VALUES ('" + req.body.TicketSales + "', '" + req.body.GiftShopSales + "', '" + req.body.RestaurantSales + "', '" + req.body.FoodStallSales + "', '" + req.body.Date + "', '" + req.body.TotalSales + "')"
+    var values = "INSERT INTO daily_revenue (Sales_Date, Ticket_Sales, Restaurant_Sales, Gift_Shop_Sales, Food_Stall_Sales, Total_Sales) VALUES ('" + req.body.Date + "', '" + req.body.TicketSales + "', '" + req.body.RestaurantSales + "', '" + req.body.GiftShopSales + "',  '" + req.body.FoodStallSales + "', '" + req.body.TotalSales + "')"
     pool.getConnection(function(err, connection){
         if(err) throw err;
         connection.query(values, function(err, result, fields){

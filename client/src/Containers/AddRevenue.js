@@ -87,7 +87,7 @@ export default function AddAnimal(){
                     <input type="number" step="0.01" min="0" placeholder="Food Stall Sales" id="FoodstallSales" onChange={(e)=> setFoodStallSales(e.target.value)}></input> 
  
                 <label>Date</label>
-               	    <input type="text"  placeholder="mm/dd/yyyy" id="Date" onChange={(e)=> setDate(e.target.value)}></input> 
+               	    <input type="date"  placeholder="mm/dd/yyyy" id="Date" onChange={(e)=> setDate(e.target.value)}></input> 
                 <button type="submit">Submit</button>
             </form>
         </div>

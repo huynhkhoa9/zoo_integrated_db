@@ -10,7 +10,8 @@ const app = express();
 app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
-app.use("/", router);
+app.use('/', router);
+app.use('*', router);
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 // Handles any requests that don't match the ones above
