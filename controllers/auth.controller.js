@@ -190,8 +190,8 @@ exports.addemployee = (req, res) => {
             if(err) throw err;
             console.log("Query to employee table was made")
         });
+        connection.release();
     });
-    connection.release();
 }
 
 exports.addrevenue = (req, res) => {
@@ -202,16 +202,17 @@ exports.addrevenue = (req, res) => {
             if(err) throw err;
             console.log("Query to revenue table was made")
         });
+        connection.release();
     });
-    connection.release();
 }
 
-exports.animalReport =  (req, res) =>{
+exports.animalReport =  function(req, res){
     const listofAnimals = "SELECT * FROM animal";
-    pool.getConnection((err, connection) => {
-        connection.query(listofAnimals, function(err, result){
+
+    pool.getConnection(function(err, connection){
+        connection.query(listofAnimals, function(err, result, fields){
+            res.send(result);
         });
+        connection.release();
     });
-    res.send(result);
-    connection.release();
 }

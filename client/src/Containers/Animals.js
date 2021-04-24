@@ -17,10 +17,8 @@ export default function Animals(){
 
     function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
         return axios.get("/api/auth/getAnimals").then((response) => {
-            
             console.log(response.data);
-            
-            //setAnimalList(response.data);
+            setAnimalList(response.data);
         });
     }
 
@@ -58,9 +56,8 @@ export default function Animals(){
     
     function handleSubmit6(event){
         event.preventDefault();
-        //check(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat);
-
-        getAnimals();
+        check(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat);
+        console.log("Hello");
     }
 
     return(
