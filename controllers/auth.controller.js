@@ -210,12 +210,8 @@ exports.animalReport =  (req, res) =>{
     const listofAnimals = "SELECT * FROM animal";
     pool.getConnection((err, connection) => {
         connection.query(listofAnimals, function(err, result){
-           
-            console.log(result);
-
-            res.send(result);
-
         });
     });
+    res.send(result);
     connection.release();
 }

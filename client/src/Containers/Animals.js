@@ -5,12 +5,6 @@ import "./Animals.css"
 import axios from "axios"
 import MainPageNavBar from "./MainPageNavBar"
 
-function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
-    return axios.get("/api/auth/getAnimals", function(){}).then((response) => {
-       setAnimalList(response.data);
-    });
-}
-
 export default function Animals(){
     var history = useHistory();
     const [AnimalId, setAnimalId] = useState("");
@@ -20,6 +14,16 @@ export default function Animals(){
     const [AnimalName, setAnimalName] = useState("");
     const [Habitat, setHabitat] = useState("");
     const [AnimalList, setAnimalList] = useState([]);
+
+    function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
+        return axios.get("/api/auth/getAnimals").then((response) => {
+            
+            console.log(response.data);
+            
+            //setAnimalList(response.data);
+        });
+    }
+
     function check(id, species, name, dob, gender, habitat){
         var a = id;
         var b = species;
@@ -54,8 +58,9 @@ export default function Animals(){
     
     function handleSubmit6(event){
         event.preventDefault();
-        check(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat);
-        
+        //check(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat);
+
+        getAnimals();
     }
 
     return(
@@ -123,9 +128,14 @@ export default function Animals(){
                     </tr>
                 </table>
 
-                {AnimalList.map((val) => {
-                    return <h1>Animal: {val.AnimalName} </h1>
-                })}
+            {
+            AnimalList.map((val) =>
+            {            
+                return (
+                     <h1>{val.AnimalName}</h1>
+                );
+            })}
+
         </div>
     )
 }

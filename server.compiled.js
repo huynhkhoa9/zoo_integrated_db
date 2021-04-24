@@ -10,8 +10,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 // server.js
 //
-var mysql = require('mysql');
-
 var app = (0, _express["default"])(); // parse requests of content-type - application/json
 
 app.use(_express["default"].json()); // parse requests of content-type - application/x-www-form-urlencoded
@@ -29,11 +27,4 @@ app.get('*', function (req, res) {
 var PORT = process.env.PORT || 8080;
 app.listen(PORT, function () {
   console.log("Server listening at port ".concat(PORT, "."));
-});
-var pool = mysql.createPool({
-  connectionLimit: 10,
-  host: 'aajohs9larexbk.chdju4zwao3b.us-east-2.rds.amazonaws.com',
-  user: 'admin',
-  password: 'UHCougarsCS2021$',
-  database: 'ebdb'
 });
