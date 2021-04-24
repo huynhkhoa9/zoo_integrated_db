@@ -17,7 +17,7 @@ export default function Animals(){
 
     function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
         return axios.get("/api/auth/getAnimals").then((response) => {
-            AnimalList = (response.data);
+            setAnimalList(response.data);
 
             console.log(AnimalList);
         });
