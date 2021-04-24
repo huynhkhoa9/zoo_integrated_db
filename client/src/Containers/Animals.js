@@ -19,7 +19,7 @@ export default function Animals(){
         return axios.get("/api/auth/getAnimals").then((response) => {
             setAnimalList(response.data);
 
-            console.log(AnimalList);
+            console.log(response.data);
         });
     }
 
