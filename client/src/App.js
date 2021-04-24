@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Main from './Containers/Main'
 import Animals from './Containers/Animals'
+import AnimalsEmployee from './Containers/AnimalsEmployee'
 import Employees from './Containers/Employees'
 import AddAnimal from './Containers/AddAnimal'
 import AnimalAdded from './Containers/AnimalAdded'
@@ -40,6 +41,7 @@ class App extends Component{
             <Route exact path="/AddRevenue" component={AddRevenue}></Route>
             <Route exact path="/AnimalsPage" component={AnimalsPage}></Route>
             <Route exact path="/EmployeePage" component={EmployeePage}></Route>
+            <Route exact path="/AnimalsEmployee" component={AnimalsEmployee}></Route>
           </Switch>
       </Router>
     )

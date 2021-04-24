@@ -1,8 +1,17 @@
-import React, {useEffect, useState} from "react"
+import React, {useState} from "react"
 import {useHistory} from "react-router-dom"
-import "./Animals.css"
+import EmployeeNavBar from "./EmployeeNavBar"
+import "./AnimalsEmployee.css"
 import axios from "axios"
-import MainPageNavBar from "./MainPageNavBar"
+
+function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
+    return axios.post("/getAnimals", {
+        AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat
+    })
+    .then(response => {
+        return response.data;
+    });
+}
 
 export default function Animals(){
     var history = useHistory();
@@ -12,15 +21,6 @@ export default function Animals(){
     const [AnimalGender, setAnimalGender] = useState("");
     const [AnimalName, setAnimalName] = useState("");
     const [Habitat, setHabitat] = useState("");
-    const [AnimalList, setAnimalList] = useState([]);
-
-    function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
-        return axios.get("/api/auth/getAnimals").then((response) => {
-            setAnimalList(response.data);
-
-            console.log(response.data);
-        });
-    }
 
     function check(id, species, name, dob, gender, habitat){
         var a = id;
@@ -57,11 +57,14 @@ export default function Animals(){
     function handleSubmit6(event){
         event.preventDefault();
         check(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat);
+        
     }
+
+
 
     return(
         <div className="Animals">
-            <MainPageNavBar />
+            <EmployeeNavBar />
             <h1>Enter the Animal Information for Report</h1>
             <form class="animals" id="animalsform" onSubmit={handleSubmit6}>
                 <label>Animal Id</label>
