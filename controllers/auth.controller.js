@@ -213,6 +213,7 @@ exports.animalReport =  function(req, res){
         connection.query(listofAnimals, function(err, result, fields){
             res.send(result);
         });
+        console.log(res);
         connection.release();
     });
 }
