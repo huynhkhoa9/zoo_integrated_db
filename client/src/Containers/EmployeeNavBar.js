@@ -38,6 +38,9 @@ export default function EmployeeNavBar(){
     return(
         <div className="EmployeeNavBar">
             <header>
+                <Button className="Home" block size="lg" type="submit" onClick={HomeSubmit}>
+                    Home
+                </Button>
                 <Button className="Add Animal" block size="lg" type="submit" onClick={AddAnimalSubmit}>
                     Add New Animal
                 </Button>
@@ -47,12 +50,9 @@ export default function EmployeeNavBar(){
                 <Button className="Add Revenue" block size="lg" type="submit" onClick={AddRevenueSubmit}>
                     Add New Revenue
                 </Button>
-                <Button className="Home" block size="lg" type="submit" onClick={HomeSubmit}>
-                    Home
-                </Button>
                 <Button className="Animals" block size="lg" type="submit" onClick={AnimalsSubmit}>
-                    Animals
-                </Button>
+                    Animals Report
+                </Button> 
                 <Button className="Employees" block size="lg" type="submit" onClick={EmployeesSubmit}>
                     Employees
                 </Button>

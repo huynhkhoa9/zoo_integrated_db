@@ -1,10 +1,10 @@
 const config = require("../auth/auth.config")
 const mysql = require('mysql')
 
-var jwt = require("jsonwebtoken")
-var bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcryptjs")
 
-let pool = mysql.createPool({
+const pool = mysql.createPool({
     connectionLimit: 10,
     host: 'aajohs9larexbk.chdju4zwao3b.us-east-2.rds.amazonaws.com',
     user: 'admin',
@@ -201,6 +201,20 @@ exports.addrevenue = (req, res) => {
         connection.query(values, function(err, result, fields){
             if(err) throw err;
             console.log("Query to revenue table was made")
+        });
+    });
+    connection.release();
+}
+
+exports.animalReport =  (req, res) =>{
+    const listofAnimals = "SELECT * FROM animal";
+    pool.getConnection((err, connection) => {
+        connection.query(listofAnimals, function(err, result){
+           
+            console.log(result);
+
+            res.send(result);
+
         });
     });
     connection.release();

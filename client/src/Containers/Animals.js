@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import {useHistory} from "react-router-dom"
 import EmployeeNavBar from "./EmployeeNavBar"
 import "./Animals.css"
@@ -6,11 +6,8 @@ import axios from "axios"
 import MainPageNavBar from "./MainPageNavBar"
 
 function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
-    return axios.post("/getAnimals", {
-        AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat
-    })
-    .then(response => {
-        return response.data;
+    return axios.get("/api/auth/getAnimals", function(){}).then((response) => {
+       setAnimalList(response.data);
     });
 }
 
@@ -22,7 +19,7 @@ export default function Animals(){
     const [AnimalGender, setAnimalGender] = useState("");
     const [AnimalName, setAnimalName] = useState("");
     const [Habitat, setHabitat] = useState("");
-
+    const [AnimalList, setAnimalList] = useState([]);
     function check(id, species, name, dob, gender, habitat){
         var a = id;
         var b = species;
@@ -60,8 +57,6 @@ export default function Animals(){
         check(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat);
         
     }
-
-
 
     return(
         <div className="Animals">
@@ -127,6 +122,10 @@ export default function Animals(){
                         <th>Animal Habitat</th>
                     </tr>
                 </table>
+
+                {AnimalList.map((val) => {
+                    return <h1>Animal: {val.AnimalName} </h1>
+                })}
         </div>
     )
 }

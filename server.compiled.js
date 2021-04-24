@@ -30,3 +30,10 @@ var PORT = process.env.PORT || 8080;
 app.listen(PORT, function () {
   console.log("Server listening at port ".concat(PORT, "."));
 });
+var pool = mysql.createPool({
+  connectionLimit: 10,
+  host: 'aajohs9larexbk.chdju4zwao3b.us-east-2.rds.amazonaws.com',
+  user: 'admin',
+  password: 'UHCougarsCS2021$',
+  database: 'ebdb'
+});

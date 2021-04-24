@@ -3,7 +3,6 @@
 import path from 'path';
 import express from 'express';
 import router from './routes/auth.routes';
-const mysql = require('mysql');
 const app = express();
 
 // parse requests of content-type - application/json
