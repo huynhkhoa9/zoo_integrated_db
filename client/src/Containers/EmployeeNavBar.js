@@ -6,7 +6,7 @@ export default function EmployeeNavBar(){
     var history = useHistory()
 
     const AnimalsSubmit = (e) =>{
-        history.push("/Animals")
+        history.push("/AnimalsEmployee")
         window.location.reload();
     }
 
