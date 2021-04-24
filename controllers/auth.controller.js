@@ -211,7 +211,7 @@ exports.animalReport =  function(req, res){
 
     pool.getConnection(function(err, connection){
         connection.query(listofAnimals, function(err, result, fields){
-            res.json(result);
+            res.send(result);
         });
         connection.release();
     });
