@@ -207,9 +207,16 @@ exports.addrevenue = (req, res) => {
 }
 
 exports.animalReport =  function(req, res){
-    const listofAnimals = "SELECT * FROM animal WHERE Animal_Name = '" + req.body.AnimalName + "'";
+    const listofAnimals = "SELECT * FROM animal" ;
 
-    console.log(req.body.AnimalName);
+    if(Object.keys(req.body).length === 0)
+        console.log("req.body is empty");
+    const nameFilter;
+    const idFilter;
+    const dobFilter;
+    const speciesFilter;
+    const habitatFilter;
+    const genderFilter;
 
     pool.getConnection(function(err, connection){
         connection.query(listofAnimals, function(err, result, fields){
