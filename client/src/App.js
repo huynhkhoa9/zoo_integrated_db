@@ -14,9 +14,9 @@ import Login from './Containers/Login'
 import EmployeeLogin from './Containers/EmployeeLogin'
 import EmployeeMain from './Containers/EmployeeMain'
 import AddRevenue from './Containers/AddRevenue'
+import Revenue from './Containers/Revenue'
 import RevenueAdded from './Containers/RevenueAdded'
 import AnimalsPage from './Containers/AnimalPage'
-import EmployeePage from './Containers/EmployeePage'
 
 class App extends Component{
 
@@ -39,8 +39,8 @@ class App extends Component{
             <Route exact path="/EmployeeLogin" component={EmployeeLogin}></Route>
             <Route exact path="/EmployeeMain" component={EmployeeMain}></Route>
             <Route exact path="/AddRevenue" component={AddRevenue}></Route>
+            <Route exact path="/Revenue" component={Revenue}></Route>
             <Route exact path="/AnimalsPage" component={AnimalsPage}></Route>
-            <Route exact path="/EmployeePage" component={EmployeePage}></Route>
             <Route exact path="/AnimalsEmployee" component={AnimalsEmployee}></Route>
           </Switch>
       </Router>

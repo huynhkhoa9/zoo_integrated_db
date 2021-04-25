@@ -235,3 +235,123 @@ exports.showAnimals = function(req, res){
         connection.release();
     });
 }
+
+exports.getAnimals = (req, res) => {
+    let valid = true;
+    console.log("GetAnimals function called from backend");
+    console.log("Id Query access");
+    let query = "SELECT * FROM animals WHERE Animal_Id = '" + req.body.AnimalId + "'"
+    pool.getConnection( async function(err, connection) {
+        if(err){
+            res.status(401).send({
+                message: "Failed to connect to database"
+            })
+            return console.error('error:' + err.message)
+        }    
+    
+        //must use await and promise to make the program wait for query to finish
+        valid = await new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                connection.query(query, function(err, result, fields){
+                    if (err) throw err;
+                    res.status(200).send({
+                        data: result
+                    })
+                 })
+                 }, 2000);
+         })
+        console.log("Animal Id was sent")
+        connection.release();
+        console.log("Id Query access ended");
+        })
+}
+
+exports.checkIdEmployee = (req, res) => {
+    let valid = true;
+    console.log("Check Id function called!");
+    var y = false;
+    let query = "SELECT Employee_Id FROM employee WHERE Employee_Id = '" + req.body.EmployeeId + "'"
+
+    pool.getConnection( async function(err, connection){
+        if(err){
+            res.status(401).send({
+                message: "Failed to connect to database"
+            })
+            return console.error('error:' + err.message)
+        }
+        valid = await new Promise(function(resolve, reject){
+            setTimeout(function(){
+                connection.query(query, function(err, result, fields){
+                    if(err) throw err;
+                    if(result.length != 0){
+                        //console.log("Duplicate Id, denying Signup");
+                        y = true;
+                        res.status(400).send({
+                            message: "ID already in use!"
+                        })
+                        resolve(false);
+                    }
+                    else{
+                        resolve(true);
+                    }
+                })
+            }, 2000);
+        })
+        if(y === true){
+            connection.release();
+            //console.log("Returning True");
+            return y;
+        }
+        else{
+            connection.release();
+            //console.log("Returning False");
+            y = false;
+            return y;
+        }
+    })
+}
+
+exports.checkIdAnimal = (req, res) => {
+    let valid = true;
+    console.log("Check Id function called for Animals!");
+    var y = false;
+    let query = "SELECT Animal_Id FROM animals WHERE Animal_Id = '" + req.body.AnimalId + "'"
+
+    pool.getConnection( async function(err, connection){
+        if(err){
+            res.status(401).send({
+                message: "Failed to connect to database"
+            })
+            return console.error('error:' + err.message)
+        }
+        valid = await new Promise(function(resolve, reject){
+            setTimeout(function(){
+                connection.query(query, function(err, result, fields){
+                    if(err) throw err;
+                    if(result.length != 0){
+                        //console.log("Duplicate Id, denying Signup");
+                        y = true;
+                        res.status(400).send({
+                            message: "ID already in use!"
+                        })
+                        resolve(false);
+                    }
+                    else{
+                        resolve(true);
+                    }
+                })
+            }, 2000);
+        })
+        if(y === true){
+            connection.release();
+            //console.log("Returning True");
+            return y;
+        }
+        else{
+            connection.release();
+            //console.log("Returning False");
+            y = false;
+            return y;
+        }
+    })
+}
