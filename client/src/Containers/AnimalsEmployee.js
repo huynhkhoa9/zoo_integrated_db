@@ -129,7 +129,7 @@ export default function Animals(){
                 </table>
 
                 {AnimalsArray.map((value, key) => {
-                    return <h1>{value.Animal_Name}</h1>
+                    return <p1>{value.Animal_Name} | {value.Species} | {value.Animal_Gender} | {value.Animal_Habitat}</p1>
                 })}
         </div>
     )
