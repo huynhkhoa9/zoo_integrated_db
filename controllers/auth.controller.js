@@ -178,8 +178,8 @@ exports.addanimal = (req, res) => {
             if(err) throw err;
             console.log("Query to animal table was made")
         });
+        connection.release();
     });
-    connection.release();
 }
 
 exports.addemployee = (req, res) => {
