@@ -5,11 +5,9 @@ import "./AnimalsEmployee.css"
 import axios from "axios"
 
 function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
-    return axios.post("/getAnimals", {
-        AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat
-    })
-    .then(response => {
-        return response.data;
+    return axios.get("/api/auth/getAnimals").then((response) => {
+        console.log(response.data);
+
     });
 }
 
