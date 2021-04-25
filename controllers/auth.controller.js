@@ -207,7 +207,9 @@ exports.addrevenue = (req, res) => {
 }
 
 exports.animalReport =  function(req, res){
-    const listofAnimals = "SELECT * FROM animal WHERE Animal_Name = '"+ req.body.AnimalName+"'";
+    const listofAnimals = "SELECT * FROM animal WHERE Animal_Name = '" + req.body.AnimalName + "'";
+
+    console.log(req.body.AnimalName);
 
     pool.getConnection(function(err, connection){
         connection.query(listofAnimals, function(err, result, fields){
