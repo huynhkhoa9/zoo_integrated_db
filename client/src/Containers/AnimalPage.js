@@ -1,15 +1,18 @@
 import MainPageNavBar from "./MainPageNavBar"
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import {useHistory} from "react-router-dom"
 import axios from "axios"
 import "./card.css"
-
-
 //fix the main nav bar here
 
 export default function AnimalPage(){
-    var animalName = "Elephant"
-    var animalDescription = "Big boy"
+    var [AnimalsArray, setAnimalsArray] = useState([]);
+
+    useEffect((req, res) =>{
+        axios.get("/api/auth/showAnimals").then((response) => {
+            setAnimalsArray( response.data);
+        });
+    })
 
     return(
     <div class = "AnimalPage">
@@ -18,12 +21,13 @@ export default function AnimalPage(){
             <MainPageNavBar />
             <h1>Animals in our Zoo</h1>
         </div>
-
-        <div className = "card">
-            <h1><var>{animalName}</var></h1>
-            <p><var>{animalDescription}</var></p>
-        </div>
-
+        {
+           AnimalsArray.map((value, key) => {
+            return<div className = "card">
+                     <h1>{value.Animal_Name} </h1>
+                     <p>{value.Species} | {value.Animal_Gender} | {value.Animal_Habitat} | {value.Anima_DOB}</p>
+                </div>
+        })}
     </div>
     )
 

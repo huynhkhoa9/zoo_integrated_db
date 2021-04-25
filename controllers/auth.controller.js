@@ -224,3 +224,14 @@ exports.animalReport =  function(req, res){
         connection.release();
     });
 }
+
+exports.showAnimals = function(req, res){
+    const animalQuery =  "SELECT * FROM animal";
+
+    pool.getConnection(function(err, connection){
+        connection.query(animalQuery, function(err, result, fields){
+            res.send(result);
+        });
+        connection.release();
+    });
+}

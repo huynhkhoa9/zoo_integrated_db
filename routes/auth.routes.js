@@ -10,4 +10,5 @@ router.post("/api/auth/addrevenue", controller.addrevenue)
 
 router.post("/api/auth/getAnimals", controller.animalReport)
 
+router.get("/api/auth/showAnimals", controller.showAnimals)
 module.exports = router;
