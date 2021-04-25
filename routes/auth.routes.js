@@ -8,6 +8,6 @@ router.post("/api/auth/addanimal", controller.addanimal)
 router.post("/api/auth/addemployee", controller.addemployee)
 router.post("/api/auth/addrevenue", controller.addrevenue)
 
-router.get("/api/auth/getAnimals", controller.animalReport)
+router.post("/api/auth/getAnimals", controller.animalReport)
 
 module.exports = router;

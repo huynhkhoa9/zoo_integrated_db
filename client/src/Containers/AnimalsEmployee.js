@@ -16,7 +16,7 @@ export default function Animals(){
     var [AnimalsArray, setAnimalsArray] = useState([]);
 
     function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
-        return axios.get("/api/auth/getAnimals", {AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat}).then((response) => {
+        return axios.post("/api/auth/getAnimals", {AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat}).then((response) => {
             setAnimalsArray( response.data);
         });
     }
