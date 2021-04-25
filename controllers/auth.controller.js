@@ -210,7 +210,10 @@ exports.animalReport =  function(req, res){
     const listofAnimals = "SELECT * FROM animal" ;
 
     if(Object.keys(req.body).length === 0)
+    {
         console.log("req.body is empty");
+    }
+
 
 /*  const nameFilter;
     const idFilter;
