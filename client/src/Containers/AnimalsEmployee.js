@@ -128,8 +128,8 @@ export default function Animals(){
                     </tr>
                 </table>
 
-                {AnimalsArray.map((val) => {
-                    return <h1>{val.Animal_Name}</h1>
+                {AnimalsArray.map((value, key) => {
+                    return <h1>{value.Animal_Name}</h1>
                 })}
         </div>
     )
