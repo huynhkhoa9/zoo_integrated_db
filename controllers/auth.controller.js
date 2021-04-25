@@ -55,6 +55,47 @@ exports.signup = (req, res) => {
     })
 }
 
+exports.checkEmail = (req, res) => {
+    let valid = true;
+    let query ="SELECT Customer_Email FROM customer WHERE Customer_Email = '" + req.body.Email + "'"
+    let y = false;
+    pool.getConnection( async function(err, connection){
+        if(err){
+            return console.error('error:', + err.message);
+        }
+        console.log('checkEmail function called');
+
+        valid = await new Promise(function(resolve, reject){
+            setTimeout(function(){
+                connection.query(query, function(err, result, fields){
+                    if(err) throw err;
+                    if(result.length !== 0){
+                        console.log("Email already exists");
+                        res.status(400).send({
+                            message: "Email already being used!"
+                        })
+                        resolve(false);
+                    }
+                    else{
+                        resolve(true);
+                    }
+                })
+            }, 2000);
+        })
+        if(!valid){
+            connection.release();
+            console.log("Returning True");
+            y = true;
+            return y;
+        }
+        else{
+            connection.release();
+            console.log("Returning false");
+            return y;
+        }
+    })
+}
+
 exports.signin = (req, res) => {
     let valid = true;
     let query = "SELECT Customer_Username, Customer_Password FROM customer WHERE Customer_Username = '" + req.body.Username + "'"
