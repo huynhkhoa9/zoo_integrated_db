@@ -3,6 +3,7 @@ const mysql = require('mysql')
 
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
+const e = require("express")
 
 const pool = mysql.createPool({
     connectionLimit: 10,
@@ -207,15 +208,15 @@ exports.addrevenue = (req, res) => {
 }
 
 exports.animalReport =  function(req, res){
-    const listofAnimals = "SELECT * FROM animal" ;
+    let listofAnimals = "SELECT * FROM animal";
 
-/*  const nameFilter;
-    const idFilter;
-    const dobFilter;
-    const speciesFilter;
-    const habitatFilter;
-    const genderFilter;
-*/
+    const nameFilter = "Animal_Name = '" + req.body.AnimalName + "'";
+    const idFilter = "Animal_ID = '" + req.body.AnimalID + "'";
+    const dobFilter = "Animal_DOB = '" + req.body.AnimalDOB + "'";
+    const speciesFilter = "Species = '" + req.body.Species + "'";
+    const habitatFilter = "Habitat = '" + req.body.AnimalHabitat + "'";
+    const genderFilter = "Animal_Gender = '" + req.body.AnimalGender + "'";
+
     pool.getConnection(function(err, connection){
         connection.query(listofAnimals, function(err, result, fields){
             res.send(result);
