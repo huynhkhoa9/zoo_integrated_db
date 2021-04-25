@@ -209,12 +209,6 @@ exports.addrevenue = (req, res) => {
 exports.animalReport =  function(req, res){
     const listofAnimals = "SELECT * FROM animal" ;
 
-    if(obj.hasOwnProperty(prop))
-    {
-        console.log("req.body is not empty");
-    }
-
-
 /*  const nameFilter;
     const idFilter;
     const dobFilter;
