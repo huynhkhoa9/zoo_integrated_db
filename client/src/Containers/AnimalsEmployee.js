@@ -4,12 +4,6 @@ import EmployeeNavBar from "./EmployeeNavBar"
 import "./AnimalsEmployee.css"
 import axios from "axios"
 
-function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
-    return axios.get("/api/auth/getAnimals").then((response) => {
-        console.log(response.data);
-
-    });
-}
 
 export default function Animals(){
     var history = useHistory();
@@ -19,6 +13,15 @@ export default function Animals(){
     const [AnimalGender, setAnimalGender] = useState("");
     const [AnimalName, setAnimalName] = useState("");
     const [Habitat, setHabitat] = useState("");
+    const [AnimalsArray, setAnimalsArray] = useState([]);
+
+    function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
+        return axios.get("/api/auth/getAnimals").then((response) => {
+            setAnimalsArray(response.data);
+
+            console.log(AnimalsArray);
+        });
+    }
 
     function check(id, species, name, dob, gender, habitat){
         var a = id;
