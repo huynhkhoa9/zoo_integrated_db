@@ -16,11 +16,7 @@ export default function Animals(){
     const [AnimalsArray, setAnimalsArray] = useState([]);
 
     function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
-        return axios.get("/api/auth/getAnimals").then((response) => {
-            setAnimalsArray(response.data);
-
-            console.log(AnimalsArray);
-        });
+        return axios.get("/api/auth/getAnimals").then((response) => setAnimalsArray(response.data));
     }
 
     function check(id, species, name, dob, gender, habitat){
@@ -53,6 +49,8 @@ export default function Animals(){
         }
 
         getAnimals(a, b, c, d, e, f);
+
+        console.log(AnimalsArray);
     }
     
     function handleSubmit6(event){
