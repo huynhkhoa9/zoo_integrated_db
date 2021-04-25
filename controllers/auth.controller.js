@@ -209,9 +209,9 @@ exports.addrevenue = (req, res) => {
 exports.animalReport =  function(req, res){
     const listofAnimals = "SELECT * FROM animal" ;
 
-    if(Object.keys(req.body).length === 0)
+    if(obj.hasOwnProperty(prop))
     {
-        console.log("req.body is empty");
+        console.log("req.body is not empty");
     }
 
 
