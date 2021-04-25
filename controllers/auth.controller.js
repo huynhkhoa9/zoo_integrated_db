@@ -203,7 +203,6 @@ exports.addrevenue = (req, res) => {
             console.log("Query to revenue table was made")
         });
         connection.release();
-        
     });
 }
 

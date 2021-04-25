@@ -17,7 +17,7 @@ export default function Animals(){
 
     function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
         return axios.get("/api/auth/getAnimals").then((response) => {
-            setAnimalsArray(response.data);
+            setAnimalsArray( response.data);
         });
     }
 
@@ -127,6 +127,10 @@ export default function Animals(){
                         <th>Animal Habitat</th>
                     </tr>
                 </table>
+
+                {AnimalsArray.map((val) => {
+                    return <h1>{val.Animal_Name}</h1>
+                })}
         </div>
     )
 }
