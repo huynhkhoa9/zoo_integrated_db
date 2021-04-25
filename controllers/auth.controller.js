@@ -211,13 +211,14 @@ exports.animalReport =  function(req, res){
 
     if(Object.keys(req.body).length === 0)
         console.log("req.body is empty");
-    const nameFilter;
+
+/*  const nameFilter;
     const idFilter;
     const dobFilter;
     const speciesFilter;
     const habitatFilter;
     const genderFilter;
-
+*/
     pool.getConnection(function(err, connection){
         connection.query(listofAnimals, function(err, result, fields){
             res.send(result);
