@@ -3,7 +3,28 @@ body{
   }
   
   h1{
-      color: red;
+      color: rgb(7, 92, 42);
     font-family: 'Open Sans', sans-serif;
     text-align: center;
+    font-size: 70px;
+  }
+
+  h2{
+    color: rgb(73, 112, 90);
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    font-size: 50px;
+  }
+
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+
+  button{
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    background-color: #b0e6b2;
+    font-size: 25px;
   }
