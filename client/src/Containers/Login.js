@@ -7,7 +7,7 @@ import "./Login.css"
 
 function login(Username, Password){
     return axios
-        .post("/api/auth/login", {
+        .post("/api/auth/signin", {
             Username,
             Password
         })

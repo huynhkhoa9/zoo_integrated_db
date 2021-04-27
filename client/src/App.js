@@ -17,6 +17,7 @@ import AddRevenue from './Containers/AddRevenue'
 import Revenue from './Containers/Revenue'
 import RevenueAdded from './Containers/RevenueAdded'
 import AnimalsPage from './Containers/AnimalPage'
+import UpdateAnimals from './Containers/UpdateAnimals'
 
 class App extends Component{
 
@@ -42,6 +43,7 @@ class App extends Component{
             <Route exact path="/Revenue" component={Revenue}></Route>
             <Route exact path="/AnimalsPage" component={AnimalsPage}></Route>
             <Route exact path="/AnimalsEmployee" component={AnimalsEmployee}></Route>
+            <Route exact path="/UpdateAnimals" component={UpdateAnimals}></Route>
           </Switch>
       </Router>
     )

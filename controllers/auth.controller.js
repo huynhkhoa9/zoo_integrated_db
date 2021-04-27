@@ -396,3 +396,75 @@ exports.checkIdAnimal = (req, res) => {
         }
     })
 }
+
+exports.getRevenue = (req, res) =>{
+    console.log("Call getRevenue");
+    let valid = true;
+    let query = "SELECT * FROM revenue WHERE Sales_Date BETWEEN '" + req.body.BeginningDate + "' AND '" + req.body.EndDate + "'"
+    pool.getConnection( async function(err, connection){
+        if(err) throw err;
+        pool.query(query, function(err, result, fields){
+            if(err) throw err;
+            console.log(result);
+        })
+    });
+    connection.release();
+}
+
+exports.updateAnimal = (req, res) =>{
+    let query = "SELECT Animal_Id FROM animals WHERE Animal_Id = '" + req.body.AnimalId + "'"
+    pool.getConnection( async function(err, connection){
+        if(err) throw err;
+         
+        valid = await new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                connection.query(query, function(err, result, fields){
+                    if (err) throw err;
+
+                    if(result.length != 0){  //if the username is in the DB
+                        if(req.body.Species !== ""){
+                            var query1;
+                            query1 = "UPDATE animals SET Species ='" + req.body.Species + "' WHERE Animal_Id = '" + req.body.AnimalId + "'"
+                            connection.query(query1, function(err,result){
+                                if(err) throw err;
+                            })
+                        }
+                        if(req.body.AnimalDOB.length !== 0){
+                            var query2;
+                            query2 = "UPDATE animals SET Animal_DOB ='" + req.body.AnimalDOB + "' WHERE Animal_Id = '" + req.body.AnimalId + "'"
+                            connection.query(query2, function(err,result){
+                                if(err) throw err;
+                            })
+                        }
+                        if(req.body.AnimalGender !== ""){
+                            var query3;
+                            query3 = "UPDATE animals SET Animal_Gender ='" + req.body.AnimalGender + "' WHERE Animal_Id = '" + req.body.AnimalId + "'"
+                            connection.query(query3, function(err,result){
+                                if(err) throw err;
+                            })
+                        }
+                        if(req.body.AnimalName !== ""){
+                            var query4;
+                            query4 = "UPDATE animals SET Animal_Name ='" + req.body.AnimalName + "' WHERE Animal_Id = '" + req.body.AnimalId + "'"
+                            connection.query(query4, function(err,result){
+                                if(err) throw err;
+                            })
+                        }
+                        if(req.body.Habitat !== ""){
+                            let query5
+                            query5 = "UPDATE animals SET Habitat ='" + req.body.Habitat + "' WHERE Animal_Id = '" + req.body.AnimalId + "'"
+                            connection.query(query5, function(err,result){
+                                if(err) throw err;
+                            })
+                        }
+                        resolve(true)
+                    }
+                    else{
+                        resolve(false)
+                    }
+                })
+                }, 2000);
+        })
+        connection.release();
+    })
+}

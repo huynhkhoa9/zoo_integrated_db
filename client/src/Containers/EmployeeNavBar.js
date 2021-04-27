@@ -45,11 +45,19 @@ export default function EmployeeNavBar(){
         window.location.reload();
     }
 
+    const UpdateSubmit = (e) =>{
+        history.push("/UpdateAnimals")
+        window.location.reload();
+    }
+
     return(
         <div className="EmployeeNavBar">
             <header>
                 <Button className="Add Animal" block size="lg" type="submit" onClick={AddAnimalSubmit}>
                     Add New Animal
+                </Button>
+                <Button className="Update Animal" block size="lg" type="submit" onClick={UpdateSubmit}>
+                    Modify Animal Data
                 </Button>
                 <Button className="Add Employee" block size="lg" type="submit" onClick={AddEmployeeSubmit}>
                     Add New Employee
