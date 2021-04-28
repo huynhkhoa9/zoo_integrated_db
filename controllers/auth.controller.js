@@ -4,6 +4,7 @@ const mysql = require('mysql')
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
 const e = require("express")
+const { connect } = require("../routes/auth.routes")
 
 const pool = mysql.createPool({
     connectionLimit: 10,
@@ -371,7 +372,7 @@ exports.checkIdAnimal = (req, res) => {
     let valid = true;
     console.log("Check Id function called for Animals!");
     var y = false;
-    let query = "SELECT Animal_Id FROM animals WHERE Animal_Id = '" + req.body.AnimalId + "'"
+    let query = "SELECT Animal_Id FROM animal WHERE Animal_Id = '" + req.body.AnimalId + "'"
 
     pool.getConnection( async function(err, connection){
         if(err){
@@ -416,7 +417,7 @@ exports.getRevenue = (req, res) =>{
     console.log("Call getRevenue");
     let valid = true;
     let query = "SELECT * FROM daily_revenue WHERE Sales_Date BETWEEN '" + req.body.BeginningDate + "' AND '" + req.body.EndDate + "'"
-    pool.getConnection( async function(err, connection){
+    pool.getConnection(function(err, connection){
         if(err) throw err;
         pool.query(query, function(err, result, fields){
             if(err) throw err;
@@ -486,9 +487,13 @@ exports.updateAnimal = (req, res) =>{
 }
 
 exports.deleteAnimal = (req, res) =>{
-    let query = ""
+    let deleteQuery = "DELETE FROM animal WHERE Animal_Id = '" + req.body.AnimalId + "'"
     pool.getConnection( function(err, connection){
-
+        connection.query(deleteQuery, function(err, result)
+        {
+            if(err) throw err;
+            console.log(result);
+        })
         connection.release();
     });
 }

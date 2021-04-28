@@ -12,9 +12,9 @@ function updateAnimal(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Ha
     });
 }
 
-function deleteAnimal(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
+function deleteAnimal(AnimalId){
     return axios.post("/api/auth/deleteAnimal", {
-        AnimalId, Species, AnimalDOB, AnimalGender, AnimalName, Habitat
+        AnimalId
     })
     .then(response => {
         return response.data;
@@ -47,6 +47,9 @@ export default function UpdateAnimals() {
     function handleDelete(event)
     {
         event.preventDefault();
+
+        deleteAnimal(AnimalId);
+        alert("Animal is deleted!");
     }
 
     return(
