@@ -23,8 +23,7 @@ export default function Employee(){
     
     function handleSubmit7(event){
         event.preventDefault();
-
-        axios.post("/api/auth/employeeReport")
+        
         axios.post("/api/auth/employeeReport").then((response) => {
             setEmmployeesArray( response.data);
         });
