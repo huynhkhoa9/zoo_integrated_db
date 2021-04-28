@@ -9,8 +9,8 @@ export default function Revenue(){
     const [GiftShopSales, setGiftShopSales] = useState("");
     const [RestaurantSales, setRestaurantSales] = useState("");
     const [FoodStallSales, setFoodStallSales] = useState("");
-    const [Date, setDate] = useState("");
-    const [TotalSales, setTotalSales] = useState("");
+
+ 
     const [RevenueArray, setRevenueArray] = useState([]);
     const [BeginningDate, setBeginningDate] = useState("");
     const [EndDate, setEndDate] = useState("");
@@ -19,7 +19,7 @@ export default function Revenue(){
     {
         event.preventDefault();
 
-        axios.post("/api/auth/getRevenue").then((response) => {
+        axios.post("/api/auth/getRevenue", {BeginningDate, EndDate}).then((response) => {
             setRevenueArray( response.data);
             });
     }
@@ -38,8 +38,7 @@ export default function Revenue(){
 
             {RevenueArray.map((value) =>{
                 return <div class = "card">
-                    <p>{value.Sales_Date} | {value.Tickets_Sales} |
-                    {value.Restaurant_Sales} |
+                    <p>{value.Sales_Date} | {value.Tickets_Sales} | {value.Restaurant_Sales} |
                     {value.Gift_Shop_Sales} | {value.Food_Stall_Sales} | {value.Total_Sales}
                     </p>
                     </div>
