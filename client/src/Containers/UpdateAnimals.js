@@ -53,7 +53,7 @@ export default function UpdateAnimals() {
         <div>
             <EmployeeNavBar/>
             <h1>Modify Animal Information</h1>
-            <form class="updateform" id="updateinfo" onSubmit={this.hs.bind(this)}>
+            <form class="updateform" id="updateinfo" onSubmit={hs}>
                 <div>
                     <label>Animal Id - Id Needed to Modify Data</label>
                     <input type="text" placeholder="12345" id="animalid" onChange={(e)=> setAnimalId(e.target.value)}></input>
@@ -112,7 +112,7 @@ export default function UpdateAnimals() {
                     </select>
                 </div>
                     <button type="submit">Update</button>
-                    <button onClick ={this.handleDelete.bind(this)}>Delete</button>
+                    <button onClick ={handleDelete}>Delete</button>
             </form>
 
         </div>

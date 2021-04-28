@@ -268,6 +268,19 @@ exports.animalReport =  function(req, res){
     });
 }
 
+exports.employeeReport =  function(req, res){
+    let listofAnimals = "SELECT * FROM employee";
+
+    pool.getConnection(function(err, connection){
+        connection.query(listofAnimals, function(err, result, fields){
+            res.send(result);
+
+            console.log(result);
+        });
+        connection.release();
+    });
+}
+
 exports.showAnimals = function(req, res){
     const animalQuery =  "SELECT * FROM animal";
 

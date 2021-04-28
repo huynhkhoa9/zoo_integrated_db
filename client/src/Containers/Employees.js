@@ -19,10 +19,15 @@ export default function Employee(){
     const [EmployeeSupervisorId, setEmployeeSupervisorId] = useState("");
     const [EmployeeId, setEmployeeId] = useState("");
     const [EmployeePassword, setEmployeePassword] = useState("");
-
+    const [EmployeesArray, setEmmployeesArray] = useState([]);
+    
     function handleSubmit7(event){
         event.preventDefault();
 
+        axios.post("/api/auth/employeeReport")
+        axios.post("/api/auth/employeeReport").then((response) => {
+            setEmmployeesArray( response.data);
+        });
     }
 
     return(
@@ -112,6 +117,14 @@ export default function Employee(){
                         <th>Id</th>
                     </tr>
                 </table>
+            {EmployeesArray.map((value) =>{
+                return <div>
+                    <p>{value.Employee_FirstName} | {value.Employee_LastName} | {value.Employee_DOB} | {value.Employee_Gender} | {value.Employee_Salary}
+                    | {value.Employee_Department} | {value.Employee_ContactInfo} | {value.Employee_SSN} | {value.Employee_SupervisorId} | {value.Employee_Id} | {value.Employee_Password}
+                    </p>
+                        </div>
+                })
+            }
         </div>
     )
 }

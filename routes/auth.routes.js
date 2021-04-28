@@ -14,6 +14,7 @@ router.post("/api/auth/checkIdEmployee", controller.checkIdEmployee)
 router.post("/api/auth/checkIdAnimal", controller.checkIdAnimal)
 router.post("/api/auth/getRevenue", controller.getRevenue)
 router.post("/api/auth/updateAnimal", controller.updateAnimal)
+router.post("/api/auth/employeeReport", controller.employeeReport)
 
 router.get("/api/auth/showAnimals", controller.showAnimals)
 module.exports = router;
