@@ -24,9 +24,10 @@ export default function AnimalPage(){
         {
            AnimalsArray.map((value, key) => {
             return<div className = "card">
-                     <h2>{value.Animal_Name} </h2>
-                     <p>{value.Species} | {value.Animal_Gender} | {value.Habitat} | {value.Animal_DOB}</p>
-                </div>
+            <h2>{value.Animal_Name} </h2>
+            <h3>{value.Species} </h3>
+            <p>{value.Animal_Gender} | {value.Animal_Habitat} | {value.Anima_DOB}</p>
+       </div>
         })}
     </div>
     )

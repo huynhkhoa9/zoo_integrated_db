@@ -16,6 +16,22 @@ body{
     font-size: 50px;
   }
 
+
+h3{
+  color: #7da18d;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    font-size: 35px;
+}
+
+  p{
+    color:#e8e8e8;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    font-size: 25px;
+    font-style: italic;
+  }
+
   label {
     padding: 12px 12px 12px 0;
     display: inline-block;
