@@ -415,7 +415,7 @@ exports.checkIdAnimal = (req, res) => {
 exports.getRevenue = (req, res) =>{
     console.log("Call getRevenue");
     let valid = true;
-    let query = "SELECT * FROM revenue WHERE Sales_Date BETWEEN '" + req.body.BeginningDate + "' AND '" + req.body.EndDate + "'"
+    let query = "SELECT * FROM daily_revenue WHERE Sales_Date BETWEEN '" + req.body.BeginningDate + "' AND '" + req.body.EndDate + "'"
     pool.getConnection( async function(err, connection){
         if(err) throw err;
         pool.query(query, function(err, result, fields){
@@ -423,8 +423,8 @@ exports.getRevenue = (req, res) =>{
             console.log(result);
             res.send(result)
         })
+        connection.release();
     });
-    connection.release();
 }
 
 exports.updateAnimal = (req, res) =>{
