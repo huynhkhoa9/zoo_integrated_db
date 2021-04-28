@@ -38,12 +38,11 @@ export default function Revenue(){
 
             {RevenueArray.map((value) =>{
                 return <div class = "card">
-                    <h2>{value.Employee_FirstName} | {value.Employee_LastName}</h2>
-                    <h3>{value.Employee_Department}</h3>
-                    <p> {value.Employee_DOB} | {value.Employee_Gender} | {value.Employee_Salary}
-                    |{value.Employee_ContactInfo} | {value.Employee_SSN} | {value.Employee_SupervisorId} | {value.Employee_Id} | {value.Employee_Password}
+                    <p>{value.Sales_Date} | {value.Tickets_Sales} |
+                    {value.Restaurant_Sales} |
+                    {value.Gift_Shop_Sales} | {value.Food_Stall_Sales} | {value.Total_Sales}
                     </p>
-                        </div>
+                    </div>
                 })
             }
 

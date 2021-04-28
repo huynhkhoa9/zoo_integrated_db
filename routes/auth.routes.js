@@ -8,13 +8,17 @@ router.post("/api/auth/addanimal", controller.addanimal)
 router.post("/api/auth/addemployee", controller.addemployee)
 router.post("/api/auth/addrevenue", controller.addrevenue)
 router.post("/api/auth/getAnimals", controller.getAnimals)
+
 router.post("/api/auth/animalReport", controller.animalReport)
+router.post("/api/auth/employeeReport", controller.employeeReport)
+router.post("/api/auth/getRevenue", controller.getRevenue)
+
 router.post("/api/auth/checkEmail", controller.checkEmail)
 router.post("/api/auth/checkIdEmployee", controller.checkIdEmployee)
 router.post("/api/auth/checkIdAnimal", controller.checkIdAnimal)
-router.post("/api/auth/getRevenue", controller.getRevenue)
+
 router.post("/api/auth/updateAnimal", controller.updateAnimal)
-router.post("/api/auth/employeeReport", controller.employeeReport)
+
 
 router.get("/api/auth/showAnimals", controller.showAnimals)
 module.exports = router;
