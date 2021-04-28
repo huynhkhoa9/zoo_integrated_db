@@ -53,6 +53,7 @@ export default function EmployeeNavBar(){
     return(
         <div className="EmployeeNavBar">
             <header>
+            <div class = "btn-group">
                 <Button className="Add Animal" block size="lg" type="submit" onClick={AddAnimalSubmit}>
                     Add New Animal
                 </Button>
@@ -80,6 +81,7 @@ export default function EmployeeNavBar(){
                 <Button className="Logout" block size="lg" type="submit" onClick={LogoutSubmit}>
                     Logout
                 </Button>
+                </div>
             </header>
         </div>
     )
