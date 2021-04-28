@@ -26,7 +26,7 @@ export default function AnimalPage(){
             return<div class = "card">
             <h2>{value.Animal_Name} </h2>
             <h3>{value.Species} </h3>
-            <p>{value.Animal_Gender} | {value.Animal_Habitat} | {value.Anima_DOB}</p>
+            <p>{value.Animal_Gender} | {value.Animal_Habitat} | {value.Animal_DOB}</p>
        </div>
         })}
     </div>

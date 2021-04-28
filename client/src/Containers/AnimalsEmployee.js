@@ -129,9 +129,11 @@ export default function Animals(){
                 </table>
 
                 {AnimalsArray.map((value, key) => {
-                    return <div>
-                             <p>{value.Animal_Name} | {value.Species} | {value.Animal_Gender} | {value.Habitat} | {value.Animal_DOB}</p>
-                        </div>
+                    return <div class = "card">
+                    <h2>{value.Animal_Name} </h2>
+                    <h3>{value.Species} </h3>
+                    <p>{value.Animal_Gender} | {value.Animal_Habitat} | {value.Animal_DOB}</p>
+               </div>
                 })}
         </div>
     )
