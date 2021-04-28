@@ -18,7 +18,10 @@ router.post("/api/auth/checkIdEmployee", controller.checkIdEmployee)
 router.post("/api/auth/checkIdAnimal", controller.checkIdAnimal)
 
 router.post("/api/auth/updateAnimal", controller.updateAnimal)
+router.post("/api/auth/deleteAnimal", controller.deleteAnimal)
 
+router.post("/api/auth/updateEmployee", controller.updateEmployee)
+router.post("/api/auth/deleteEmployee", controller.deleteEmployee)
 
 router.get("/api/auth/showAnimals", controller.showAnimals)
 module.exports = router;

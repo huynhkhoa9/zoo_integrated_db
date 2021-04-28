@@ -3,118 +3,110 @@ import {useHistory} from "react-router-dom"
 import EmployeeNavBar from "./EmployeeNavBar"
 import axios from "axios"
 
-function updateAnimal(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
-    return axios.post("/api/auth/updateAnimal", {
-        AnimalId, Species, AnimalDOB, AnimalGender, AnimalName, Habitat
-    })
-    .then(response => {
-        return response.data;
-    });
-}
+export default function UpdateEmployee() {
 
-function deleteAnimal(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
-    return axios.post("/api/auth/deleteAnimal", {
-        AnimalId, Species, AnimalDOB, AnimalGender, AnimalName, Habitat
-    })
-    .then(response => {
-        return response.data;
-    });
-}
+    const [EmployeeFirstName, setEmployeeFirstName] = useState("");
+    const [EmployeeLastName, setEmployeeLastName] = useState("");
+    const [EmployeeDOB, setEmployeeDOB] = useState("");
+    const [EmployeeGender, setEmployeeGender] = useState("");
+    const [EmployeeSalary, setEmployeeSalary] = useState("");
+    const [EmployeeDepartment, setEmployeeDepartment] = useState("");
+    const [EmployeeContactInfo, setEmployeeContactInfo] = useState("");
+    const [EmployeeSSN, setEmployeeSSN] = useState("");
+    const [EmployeeSupervisorId, setEmployeeSupervisorId] = useState("");
+    const [EmployeeId, setEmployeeId] = useState("");
+    const [EmployeePassword, setEmployeePassword] = useState("");
 
-export default function UpdateAnimals() {
-    const [AnimalId, setAnimalId] = useState("");
-    const [Species, setSpecies] = useState("");
-    const [AnimalDOB, setAnimalDOB] = useState("");
-    const [AnimalGender, setAnimalGender] = useState("");
-    const [AnimalName, setAnimalName] = useState("");
-    const [Habitat, setHabitat] = useState("");
-    
-    function hs(event){
+    function handleUpdate(event){
         event.preventDefault();
-
-        if(AnimalId.length === 0){
-            alert("Must enter an Id to update the animal!")
+        axios.post("/api/auth/updateEmployee", {EmployeeId, EmployeeFirstName, EmployeeLastName, EmployeeDOB, EmployeeGender, EmployeeSalary,
+            EmployeeDepartment, EmployeeContactInfo, EmployeeSSN, EmployeeSupervisorId, EmployeePassword})
+            .then(response => {
+                return response.data;
+            })
+    
+            alert("Employee Information Updated!");
         }
-        else if(AnimalId.length !== 5){
-            alert("Animal Id must be 5 numbers long!");
-        }
-        else{
-            updateAnimal(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat);
-            alert("Animal Information has been updated");
-        }
-    }
 
     function handleDelete(event)
     {
         event.preventDefault();
+        axios.post("/api/auth/deleteEmployee", {EmployeeId});
+        alert("Employee Deleted!");
     }
 
     return(
-        <div>
-            <EmployeeNavBar/>
-            <h1>Modify Animal Information</h1>
-            <form class="updateform" id="updateinfo" onSubmit={hs}>
+        <div className="Employees">
+            <EmployeeNavBar />
+            <h1>Update Employee Information</h1>
+            <form class="employee" id="employeesinfo" onSubmit={handleUpdate}>
                 <div>
-                    <label>Animal Id - Id Needed to Modify Data</label>
-                    <input type="text" placeholder="12345" id="animalid" onChange={(e)=> setAnimalId(e.target.value)}></input>
+                <label>Employee ID - Required for update and delete</label>
+                    <input type="text" placeholder="12345" id="employeeid" onChange={(e)=> setEmployeeId(e.target.value)}></input>
                 </div>
                 <div>
-                <label>Animal Name</label>
-                    <input type="text" placeholder="Animal Name" id="AnimalName" onChange={(e)=> setAnimalName(e.target.value)}></input>
+                <label>First Name</label>
+                    <input type="text" placeholder="John" id="employeeFirstName" onChange={(e)=> setEmployeeFirstName(e.target.value)}></input>
                 </div>
+                <div>
+                <label>Last Name</label>
+                    <input type="text" placeholder="Snow" id="employeeLastName" onChange={(e)=> setEmployeeLastName(e.target.value)}></input>
+                 </div>
                 <div>
                 <label>Date of Birth</label>
-                    <input type="date" placeholder="12/31/2000" id="AnimalDOB" onChange={(e)=> setAnimalDOB(e.target.value)}></input>
+                    <input type="text" placeholder="12/31/2000" id="employeeDOB" onChange={(e)=> setEmployeeDOB(e.target.value)}></input>
                 </div>
                 <div>
-                <label>Species</label>
-                    <select id="Species" onChange={(e)=> setSpecies(e.target.value)}>
-                        <option value="">Select an Animal</option>  
-                        <option value="Anteater">Anteater</option>
-                        <option value="Arctic Fox">Arctic Fox</option>
-                        <option value="Bald Eagle">Bald Eagle</option>
-                        <option value="Beaver">Beaver</option>
-                        <option value="Bison">Bison</option>
-                        <option value="Camel">Camel</option>
-                        <option value="Chimpanzee">Chimpanzee</option>
-                        <option value="Giraffe">Giraffe</option>
-                        <option value="Gorilla">Gorilla</option>
-                        <option value="Grizzly Bear">Grizzly Bear</option>
-                        <option value="Lemur">Lemur</option>
-                        <option value="Lion">Lion</option>
-                        <option value="Polar Bear">Polar Bear</option>
-                        <option value="Prairie dog">Prairie dog</option>
-                        <option value="Red Panda">Red Panda</option>
-                        <option value="Rhinoceros">Rhinoceros</option>
-                        <option value="Sloth">Sloth</option>
-                        <option value="Tiger">Tiger</option>
-                        <option value="Wolverine">Wolverine</option>
-                        <option value="Zebra">Zebra</option>
-                    </select>
-                </div>
-                <div>
-                <label>Sex</label>
-                    <select id="AnimalGender" onChange={(e)=> setAnimalGender(e.target.value)}>
+                <label>Gender</label>
+                <select id="employeeGender" onChange={(e)=> setEmployeeGender(e.target.value)}>
                         <option value="">Select Gender</option>  
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                </select>
+                 </div>
+                <div>
+                <label>Salary</label>
+                    <input type="text" placeholder="15.00" id="employeeSalary"  onChange={(e)=> setEmployeeSalary(e.target.value)}></input>
+                </div>
+                <div>
+                <label>Department</label>
+                    <select id="department" onChange={(e)=> setEmployeeDepartment(e.target.value)}>
+                        <option value="">Select Department</option>
+                        <option value="Zoo Keeper">Zoo Keeper</option>
+                        <option value="Restaraunt Staff">Restaraunt Staff</option>
+                        <option value="Gift Shop Staff">Gift Shop Staff</option>
+                        <option value="Food Stalls">Food Stalls</option>
+                        <option value="Veterinarian">Veterinarian</option>
+                        <option value="Registrar">Registrar</option>
+                        <option value="Curator">Curator</option>
+                        <option value="Maintenance">Maintnance</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Visitor Services">Visitor Services</option>
+                        <option value="Janitorial">Janitorial</option>
+                        <option value="Membership Director">Membership Director</option>
+                        <option value="Volunteer">Volunteer</option>
                     </select>
                 </div>
                 <div>
-                <label>Habitat</label>
-                    <select id="habitat" onChange={(e)=> setHabitat(e.target.value)}>
-                        <option value="">Select habitat</option>  
-                        <option value="African Grasslands">African Grasslands</option>
-                        <option value="American Grasslands">American Grasslands</option>
-                        <option value="Arctic">Arctic</option>
-                        <option value="Asian Forest">Asian Forest</option>
-                        <option value="Great Apes of Harambee">Great Apes of Harambee</option>
-                    </select>
+                <label>Contact Information</label>
+                    <input type="text" placeholder="713-000-0000" id="employeeContactInfo" onChange={(e)=> setEmployeeContactInfo(e.target.value)}></input>
                 </div>
-                    <button type="submit">Update</button>
-                    <button onClick ={handleDelete}>Delete</button>
+                <div>
+                <label>Social Security Number</label>
+                    <input type="text" placeholder="000-00-0000" id="employeeSSN" onChange={(e)=> setEmployeeSSN(e.target.value)}></input>
+                </div>
+                <div>
+                <label>Supervisor ID</label>
+                    <input type="text" placeholder="12345" id="employeeSupervisorId" onChange={(e)=> setEmployeeSupervisorId(e.target.value)}></input>
+                </div>
+                <div>
+                <label>New Employee Password</label>
+                    <input type="text" placeholder="Enter a Password" id="employeepassword" onChange={(e)=> setEmployeePassword(e.target.value)}></input>
+                </div>
+                <button type="submit">Update</button>
+                <button onClick ={handleDelete}>Delete</button>
             </form>
-
         </div>
     )
 }

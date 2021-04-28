@@ -499,17 +499,98 @@ exports.deleteAnimal = (req, res) =>{
 }
 
 exports.updateEmployee = (req, res) =>{
-    let query = ""
+    let selectQuery = "SELECT * FROM employee WHERE Employee_Id = '" + req.body.EmployeeId + "'"
     pool.getConnection( function(err, connection){
+        connection.query(selectQuery, function(err, result)
+        {
+            if(err) throw err;
+            if(result.length != 0) // if the employee is in the db
+            {
+                if(req.body.EmployeeFirstName !== ""){
+                    var query1;
+                    query1 = "UPDATE employee SET Employee_FirstName ='" + req.body.EmployeeFirstName + "' WHERE Employee_Id = '" + req.body.EmployeeId + "'"
+                    connection.query(query1, function(err,result){
+                        if(err) throw err;
+                    })
+                }
+                if(req.body.EmployeeLastName !== ""){
+                    var query1;
+                    query1 = "UPDATE employee SET Employee_LastName ='" + req.body.EmployeeLastName + "' WHERE Employee_Id = '" + req.body.EmployeeId + "'"
+                    connection.query(query1, function(err,result){
+                        if(err) throw err;
+                    })
+                }
+                if(req.body.EmployeeDOB !== ""){
+                    var query1;
+                    query1 = "UPDATE employee SET Employee_DOB ='" + req.body.EmployeeDOB + "' WHERE Employee_Id = '" + req.body.EmployeeId + "'"
+                    connection.query(query1, function(err,result){
+                        if(err) throw err;
+                    })
+                }
+                if(req.body.EmployeeGender !== ""){
+                    var query1;
+                    query1 = "UPDATE employee SET Employee_Gender ='" + req.body.EmployeeGender + "' WHERE Employee_Id = '" + req.body.EmployeeId + "'"
+                    connection.query(query1, function(err,result){
+                        if(err) throw err;
+                    })
+                }
+                if(req.body.EmployeeSalary !== ""){
+                    var query1;
+                    query1 = "UPDATE employee SET Employee_Salary ='" + req.body.EmployeeSalary + "' WHERE Employee_Id = '" + req.body.EmployeeId + "'"
+                    connection.query(query1, function(err,result){
+                        if(err) throw err;
+                    })
+                }
+                if(req.body.EmployeeDepartment !== ""){
+                    var query1;
+                    query1 = "UPDATE employee SET Employee_Department ='" + req.body.EmployeeDepartment + "' WHERE Employee_Id = '" + req.body.EmployeeId + "'"
+                    connection.query(query1, function(err,result){
+                        if(err) throw err;
+                    })
+                }
+                if(req.body.EmployeeContactInfo !== ""){
+                    var query1;
+                    query1 = "UPDATE employee SET Employee_ContactInfo ='" + req.body.EmployeeContactInfo + "' WHERE Employee_Id = '" + req.body.EmployeeId + "'"
+                    connection.query(query1, function(err,result){
+                        if(err) throw err;
+                    })
+                }
+                if(req.body.EmployeeSSN !== ""){
+                    var query1;
+                    query1 = "UPDATE employee SET Employee_SSN ='" + req.body.EmployeeSSN + "' WHERE Employee_Id = '" + req.body.EmployeeId + "'"
+                    connection.query(query1, function(err,result){
+                        if(err) throw err;
+                    })
+                }
+                if(req.body.EmployeeSupervisorId !== ""){
+                    var query1;
+                    query1 = "UPDATE employee SET Employee_SupervisorId ='" + req.body.EmployeeSupervisorId + "' WHERE Employee_Id = '" + req.body.EmployeeId + "'"
+                    connection.query(query1, function(err,result){
+                        if(err) throw err;
+                    })
+                }
+                if(req.body.EmployeePassword !== ""){
+                    var query1;
+                    query1 = "UPDATE employee SET Employee_Password ='" + req.body.EmployeePassword + "' WHERE Employee_Id = '" + req.body.EmployeeId + "'"
+                    connection.query(query1, function(err,result){
+                        if(err) throw err;
+                    })
+                }
+            }
 
+        })
         connection.release();
     });
 }
 
 exports.deleteEmployee = (req, res) =>{
-    let query = ""
+    let deleteQuery = "DELETE FROM employee WHERE Employee_Id = '" + req.body.EmployeeId + "'"
     pool.getConnection( function(err, connection){
-
+        connection.query(deleteQuery, function(err, result)
+        {
+            if(err) throw err;
+            console.log(result);
+        })
         connection.release();
     });
 }

@@ -45,8 +45,13 @@ export default function EmployeeNavBar(){
         window.location.reload();
     }
 
-    const UpdateSubmit = (e) =>{
+    const UpdateAnimalSubmit = (e) =>{
         history.push("/UpdateAnimals")
+        window.location.reload();
+    }
+
+    const UpdateEmployeeSubmit = (e) =>{
+        history.push("/UpdateEmployee")
         window.location.reload();
     }
 
@@ -57,11 +62,14 @@ export default function EmployeeNavBar(){
                 <Button className="Add Animal" block size="lg" type="submit" onClick={AddAnimalSubmit}>
                     Add New Animal
                 </Button>
-                <Button className="Update Animal" block size="lg" type="submit" onClick={UpdateSubmit}>
+                <Button className="Update Animal" block size="lg" type="submit" onClick={UpdateAnimalSubmit}>
                     Modify Animal Data
                 </Button>
                 <Button className="Add Employee" block size="lg" type="submit" onClick={AddEmployeeSubmit}>
                     Add New Employee
+                </Button>
+                <Button className="Update Employee" block size="lg" type="submit" onClick={UpdateEmployeeSubmit}>
+                    Update Employee Data
                 </Button>
                 <Button className="Add Revenue" block size="lg" type="submit" onClick={AddRevenueSubmit}>
                     Add New Revenue
