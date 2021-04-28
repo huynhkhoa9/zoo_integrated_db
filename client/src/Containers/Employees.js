@@ -3,7 +3,7 @@ import {useHistory} from "react-router-dom"
 import EmployeeNavBar from "./EmployeeNavBar"
 import "./Employees.css"
 import axios from "axios"
-
+import "./card.css"
 
 export default function Employee(){
     var history = useHistory();
@@ -118,9 +118,11 @@ export default function Employee(){
                     </tr>
                 </table>
             {EmployeesArray.map((value) =>{
-                return <div>
-                    <p>{value.Employee_FirstName} | {value.Employee_LastName} | {value.Employee_DOB} | {value.Employee_Gender} | {value.Employee_Salary}
-                    | {value.Employee_Department} | {value.Employee_ContactInfo} | {value.Employee_SSN} | {value.Employee_SupervisorId} | {value.Employee_Id} | {value.Employee_Password}
+                return <div className = "card">
+                    <h2>{value.Employee_FirstName} | {value.Employee_LastName}</h2>
+                    <h3>{value.Employee_Department}</h3>
+                    <p> {value.Employee_DOB} | {value.Employee_Gender} | {value.Employee_Salary}
+                    |{value.Employee_ContactInfo} | {value.Employee_SSN} | {value.Employee_SupervisorId} | {value.Employee_Id} | {value.Employee_Password}
                     </p>
                         </div>
                 })
