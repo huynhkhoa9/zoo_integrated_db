@@ -38,8 +38,8 @@ export default function Revenue(){
 
             {RevenueArray.map((value) =>{
                 return <div class = "card">
-                    <p>{value.Sales_Date} | {value.Tickets_Sales} | {value.Restaurant_Sales} |
-                    {value.Gift_Shop_Sales} | {value.Food_Stall_Sales} | {value.Total_Sales}
+                    <p>Date: {value.Sales_Date} | Tickets: {value.Tickets_Sales} | Restaraunt: {value.Restaurant_Sales} |
+                    Gift Shop: {value.Gift_Shop_Sales} |Food Stall: {value.Food_Stall_Sales} | Total Sales: {value.Total_Sales}
                     </p>
                     </div>
                 })
