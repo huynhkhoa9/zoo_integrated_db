@@ -16,7 +16,7 @@ export default function Animals(){
     var [AnimalsArray, setAnimalsArray] = useState([]);
 
     function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
-        return axios.post("/api/auth/getAnimals", {AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat}).then((response) => {
+        return axios.post("/api/auth/animalReport", {AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat}).then((response) => {
             setAnimalsArray( response.data);
         });
     }
@@ -130,7 +130,7 @@ export default function Animals(){
 
                 {AnimalsArray.map((value, key) => {
                     return <div>
-                             <p>{value.Animal_Name} | {value.Species} | {value.Animal_Gender} | {value.Animal_Habitat} | {value.Anima_DOB}</p>
+                             <p>{value.Animal_Name} | {value.Species} | {value.Animal_Gender} | {value.Habitat} | {value.Animal_DOB}</p>
                         </div>
                 })}
         </div>

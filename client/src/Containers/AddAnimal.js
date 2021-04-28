@@ -32,65 +32,68 @@ export default function AddAnimal(){
     //checks if the input is valid to submit and sets the habitat of the animal here
     function handleSubmit(event){
         event.preventDefault();
-        if(Species === "Rhinoceros"){
-            Habitat = "African Grasslands";
-        }
-        else if(Species === "Lion"){
-            Habitat = "African Grasslands";
-        }
-        else if(Species === "Zebra"){
-            Habitat = "African Grasslands";
-        }
-        else if(Species ==="Giraffe"){
-            Habitat = "African Grasslands";
-        }
-        else if(Species ==="Sloth"){
-            Habitat = "African Grasslands";
-        }
-        else if(Species === "Wolverine"){
-            Habitat = "American Grasslands";
-        }
-        else if(Species ==="Anteater"){
-            Habitat = "American Grasslands";
-        }
-        else if(Species ==="Bison"){
-            Habitat = "American Grasslands";
-        }
-        else if(Species ==="Beaver"){
-            Habitat = "American Grasslands";
-        }
-        else if(Species ==="Grizzly Bear"){
-            Habitat = "American Grasslands";
-        }
-        else if(Species === "Prairie dog"){
-            Habitat = "American Grasslands";
-        }
-        else if(Species ==="Bald Eagle"){
-            Habitat = "American Grasslands";
-        }
-        else if(Species === "Polar Bear" || "Arctic Fox"){
-            Habitat = "Arctic";
-        }
-        else if(Species === "Arctic Fox"){
-            Habitat = "Arctic";
-        }
-        else if(Species === "Tiger"){
-            Habitat = "Asian Forest";
-        }
-        else if(Species === "Lemur"){
-            Habitat = "Asian Forest";
-        }
-        else if(Species === "Red Panda"){
-            Habitat = "Asian Forest";
-        }
-        else if(Species === "Camel"){
-            Habitat = "Asian Forest";
-        }
-        else if(Species === "Chimpanzee"){
-            Habitat = "Great Apes of Harambee";
-        }
-        else if(Species === "Gorilla"){
-            Habitat = "Great Apes of Harambee";
+        switch(Species)
+        {
+            case "Rhinoceros":
+                Habitat = "African Grasslands";
+                break;
+            case "Lion":
+                    Habitat = "African Grasslands";
+                break;
+            case "Zebra":
+                    Habitat = "African Grasslands";
+                break;
+            case "Giraffe":
+                    Habitat = "African Grasslands";
+                break;
+            case "Sloth":
+                    Habitat = "African Grasslands";
+                break;
+            case "Wolverine":
+                    Habitat = "American Grasslands";
+                break;
+            case "Anteater":
+                    Habitat = "American Grasslands";
+                break;
+            case "Bison":
+                    Habitat = "American Grasslands";
+                break;
+            case "Beaver":
+                    Habitat = "American Grasslands";
+                break;
+            case "Grizzly Bear":
+                    Habitat = "American Grasslands";
+                break;
+            case "Prairie dog":
+                    Habitat = "American Grasslands";
+                break;
+            case "Bald Eagle":
+                    Habitat = "American Grasslands";
+                break;
+            case "Polar Bear" || "Arctic Fox":
+                    Habitat = "Arctic";
+                break;
+            case "Arctic Fox":
+                    Habitat = "Arctic";
+                break;
+            case "Tiger":
+                    Habitat = "Asian Forest";
+                break;
+            case "Lemur":
+                    Habitat = "Asian Forest";
+                break;
+            case "Red Panda":
+                    Habitat = "Asian Forest";
+                break;
+            case "Camel":
+                    Habitat = "Asian Forest";
+                break;
+            case "Chimpanzee":
+                    Habitat = "Great Apes of Harambee";
+                break;
+            case "Gorilla":
+                    Habitat = "Great Apes of Harambee";
+                break;
         }
         
         if(validLength()){

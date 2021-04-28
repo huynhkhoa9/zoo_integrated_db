@@ -4,7 +4,16 @@ import EmployeeNavBar from "./EmployeeNavBar"
 import axios from "axios"
 
 function updateAnimal(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
-    return axios.post("http://localhost:8080/api/auth/updateAnimal", {
+    return axios.post("/api/auth/updateAnimal", {
+        AnimalId, Species, AnimalDOB, AnimalGender, AnimalName, Habitat
+    })
+    .then(response => {
+        return response.data;
+    });
+}
+
+function deleteAnimal(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
+    return axios.post("/api/auth/deleteAnimal", {
         AnimalId, Species, AnimalDOB, AnimalGender, AnimalName, Habitat
     })
     .then(response => {
@@ -19,9 +28,10 @@ export default function UpdateAnimals() {
     const [AnimalGender, setAnimalGender] = useState("");
     const [AnimalName, setAnimalName] = useState("");
     const [Habitat, setHabitat] = useState("");
-
+    
     function hs(event){
         event.preventDefault();
+
         if(AnimalId.length === 0){
             alert("Must enter an Id to update the animal!")
         }
@@ -34,11 +44,16 @@ export default function UpdateAnimals() {
         }
     }
 
+    function handleDelete(event)
+    {
+        event.preventDefault();
+    }
+
     return(
         <div>
             <EmployeeNavBar/>
             <h1>Modify Animal Information</h1>
-            <form class="updateform" id="updateinfo" onSubmit={hs}>
+            <form class="updateform" id="updateinfo" onSubmit={this.hs.bind(this)}>
                 <div>
                     <label>Animal Id - Id Needed to Modify Data</label>
                     <input type="text" placeholder="12345" id="animalid" onChange={(e)=> setAnimalId(e.target.value)}></input>
@@ -96,7 +111,8 @@ export default function UpdateAnimals() {
                         <option value="Great Apes of Harambee">Great Apes of Harambee</option>
                     </select>
                 </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit">Update</button>
+                    <button onClick ={this.handleDelete.bind(this)}>Delete</button>
             </form>
 
         </div>

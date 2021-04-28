@@ -15,7 +15,7 @@ export default function Animals(){
     const [AnimalList, setAnimalList] = useState([]);
 
     function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
-        return axios.get("/api/auth/getAnimals").then((response) => {
+        return axios.get("/api/auth/animalReport").then((response) => {
             console.log(response.data);
             setAnimalList(response.data);
         });

@@ -261,6 +261,8 @@ exports.animalReport =  function(req, res){
     pool.getConnection(function(err, connection){
         connection.query(listofAnimals, function(err, result, fields){
             res.send(result);
+
+            console.log(result);
         });
         connection.release();
     });
@@ -412,7 +414,7 @@ exports.getRevenue = (req, res) =>{
 }
 
 exports.updateAnimal = (req, res) =>{
-    let query = "SELECT Animal_Id FROM animals WHERE Animal_Id = '" + req.body.AnimalId + "'"
+    let query = "SELECT Animal_Id FROM animal WHERE Animal_Id = '" + req.body.AnimalId + "'"
     pool.getConnection( async function(err, connection){
         if(err) throw err;
          
@@ -424,35 +426,35 @@ exports.updateAnimal = (req, res) =>{
                     if(result.length != 0){  //if the username is in the DB
                         if(req.body.Species !== ""){
                             var query1;
-                            query1 = "UPDATE animals SET Species ='" + req.body.Species + "' WHERE Animal_Id = '" + req.body.AnimalId + "'"
+                            query1 = "UPDATE animal SET Species ='" + req.body.Species + "' WHERE Animal_Id = '" + req.body.AnimalId + "'"
                             connection.query(query1, function(err,result){
                                 if(err) throw err;
                             })
                         }
                         if(req.body.AnimalDOB.length !== 0){
                             var query2;
-                            query2 = "UPDATE animals SET Animal_DOB ='" + req.body.AnimalDOB + "' WHERE Animal_Id = '" + req.body.AnimalId + "'"
+                            query2 = "UPDATE animal SET Animal_DOB ='" + req.body.AnimalDOB + "' WHERE Animal_Id = '" + req.body.AnimalId + "'"
                             connection.query(query2, function(err,result){
                                 if(err) throw err;
                             })
                         }
                         if(req.body.AnimalGender !== ""){
                             var query3;
-                            query3 = "UPDATE animals SET Animal_Gender ='" + req.body.AnimalGender + "' WHERE Animal_Id = '" + req.body.AnimalId + "'"
+                            query3 = "UPDATE animal SET Animal_Gender ='" + req.body.AnimalGender + "' WHERE Animal_Id = '" + req.body.AnimalId + "'"
                             connection.query(query3, function(err,result){
                                 if(err) throw err;
                             })
                         }
                         if(req.body.AnimalName !== ""){
                             var query4;
-                            query4 = "UPDATE animals SET Animal_Name ='" + req.body.AnimalName + "' WHERE Animal_Id = '" + req.body.AnimalId + "'"
+                            query4 = "UPDATE animal SET Animal_Name ='" + req.body.AnimalName + "' WHERE Animal_Id = '" + req.body.AnimalId + "'"
                             connection.query(query4, function(err,result){
                                 if(err) throw err;
                             })
                         }
                         if(req.body.Habitat !== ""){
                             let query5
-                            query5 = "UPDATE animals SET Habitat ='" + req.body.Habitat + "' WHERE Animal_Id = '" + req.body.AnimalId + "'"
+                            query5 = "UPDATE animal SET Habitat ='" + req.body.Habitat + "' WHERE Animal_Id = '" + req.body.AnimalId + "'"
                             connection.query(query5, function(err,result){
                                 if(err) throw err;
                             })
@@ -467,4 +469,28 @@ exports.updateAnimal = (req, res) =>{
         })
         connection.release();
     })
+}
+
+exports.deleteAnimal = (req, res) =>{
+    let query = ""
+    pool.getConnection( function(err, connection){
+
+        connection.release();
+    });
+}
+
+exports.updateEmployee = (req, res) =>{
+    let query = ""
+    pool.getConnection( function(err, connection){
+
+        connection.release();
+    });
+}
+
+exports.deleteEmployee = (req, res) =>{
+    let query = ""
+    pool.getConnection( function(err, connection){
+
+        connection.release();
+    });
 }
