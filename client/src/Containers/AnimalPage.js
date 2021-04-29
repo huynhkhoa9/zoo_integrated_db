@@ -10,7 +10,7 @@ export default function AnimalPage(){
 
     useEffect((req, res) =>{
         axios.get("/api/auth/showAnimals").then((response) => {
-            setAnimalsArray( response.data);
+            setAnimalsArray(response.data);
         });
     })
 
