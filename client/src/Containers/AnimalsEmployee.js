@@ -67,26 +67,15 @@ export default function Animals(){
                     </select>
                 <button type="submit">Submit</button>
             </form>
+            {AnimalsArray.map((value, key) => {
+                return <div class = "card">
+                <h2>{value.Animal_Name} </h2>
+                <h3>{value.Species} </h3>
+                <p>{value.Animal_Gender} | {value.Habitat} | {value.Animal_DOB}</p>
+        </div>
 
-            <title>Table</title>
-                <table>
-                    <tr>
-                        <th>Animal Id</th>
-                        <th>Animal Species</th>
-                        <th>Animal Name</th>
-                        <th>Animal Date of Birth</th>
-                        <th>Animal Gender</th>
-                        <th>Animal Habitat</th>
-                    </tr>
-                </table>
-
-                {AnimalsArray.map((value, key) => {
-                    return <div class = "card">
-                    <h2>{value.Animal_Name} </h2>
-                    <h3>{value.Species} </h3>
-                    <p>{value.Animal_Gender} | {value.Habitat} | {value.Animal_DOB}</p>
-               </div>
-                })}
+            })}
+            
         </div>
     )
 }
