@@ -6,7 +6,7 @@ export default function UserMainNavBar(){
     var history = useHistory()
 
     const AnimalsSubmit = (e) =>{
-        history.push("/AnimalsPage");
+        history.push("/CustomerAnimalsPage");
         window.location.reload();
     }
 
@@ -18,12 +18,14 @@ export default function UserMainNavBar(){
     return(
         <div className="NavBar">
             <header>
+                <div class = "btn.group">
                 <Button className="Main Page" block size="lg" type="submit" onClick={MainSubmit}>
                     Home
                 </Button>
                 <Button className="Animals" block size="lg" type="submit" onClick={AnimalsSubmit}>
                     Animals
                 </Button>
+                </div>
             </header>
         </div>
     )

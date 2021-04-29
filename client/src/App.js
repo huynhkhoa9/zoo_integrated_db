@@ -19,6 +19,7 @@ import RevenueAdded from './Containers/RevenueAdded'
 import AnimalsPage from './Containers/AnimalPage'
 import UpdateAnimals from './Containers/UpdateAnimals'
 import UpdateEmployee from './Containers/UpdateEmployee'
+import CustomerAnimalsPage from './Containers/CustomerAnimalsPage'
 
 class App extends Component{
 
@@ -46,6 +47,7 @@ class App extends Component{
             <Route exact path="/AnimalsEmployee" component={AnimalsEmployee}></Route>
             <Route exact path="/UpdateAnimals" component={UpdateAnimals}></Route>
             <Route exact path="/UpdateEmployee" component={UpdateEmployee}></Route>
+            <Route exact path="/CustomerAnimalsPage" component={CustomerAnimalsPage}></Route>
           </Switch>
       </Router>
     )
