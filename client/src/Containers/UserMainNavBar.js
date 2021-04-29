@@ -15,15 +15,23 @@ export default function UserMainNavBar(){
         window.location.reload();
     }
 
+    const LogoutSubmit = (e) =>{
+        history.push("/Main")
+        window.location.reload();
+    }
+
     return(
         <div className="NavBar">
             <header>
-                <div class = "btn.group">
+                <div class = "btn-group">
                 <Button className="Main Page" block size="lg" type="submit" onClick={MainSubmit}>
                     Home
                 </Button>
                 <Button className="Animals" block size="lg" type="submit" onClick={AnimalsSubmit}>
                     Animals
+                </Button>
+                <Button className="Logout" block size="lg" type="submit" onClick={LogoutSubmit}>
+                    Logout 
                 </Button>
                 </div>
             </header>

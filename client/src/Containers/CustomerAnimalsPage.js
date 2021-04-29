@@ -18,7 +18,7 @@ export default function AnimalPage(){
     <div class = "CustomerAnimalPage">
 
         <div className="CustomerAnimalsPage">
-            <MainPageNavBar />
+            <UserMainNavBar />
             <h1>Animals in our Zoo</h1>
         </div>
         {
