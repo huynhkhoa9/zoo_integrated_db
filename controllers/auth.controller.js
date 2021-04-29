@@ -252,17 +252,31 @@ exports.addrevenue = (req, res) => {
 exports.animalReport =  function(req, res){
     let listofAnimals = "SELECT * FROM animal";
 
-    const nameFilter = "Animal_Name = '" + req.body.AnimalName + "'";
-    const idFilter = "Animal_ID = '" + req.body.AnimalID + "'";
-    const dobFilter = "Animal_DOB = '" + req.body.AnimalDOB + "'";
-    const speciesFilter = "Species = '" + req.body.Species + "'";
-    const habitatFilter = "Habitat = '" + req.body.AnimalHabitat + "'";
-    const genderFilter = "Animal_Gender = '" + req.body.AnimalGender + "'";
+    if(req.body.Species !== ""){
+        if(req.body.Habitat !== "")
+        {
+            console
+            listofAnimals = "SELECT * FROM animal WHERE Species = '"+req.body.Species+"'" +"&& Habitat = '" + req.body.Habitat+"'";
+        }
+        else
+        {
+            listofAnimals = "SELECT * FROM animal WHERE Species = '"+req.body.Species+"'";
+        }
+    }
+    else
+    { 
+        if(req.body.Habitat !== "")
+        {
+            listofAnimals = "SELECT * FROM animal WHERE Habitat = '"+req.body.Habitat+"'";
+        }
+        else
+            listofAnimals = "SELECT * FROM animal";
+    }
+       
 
     pool.getConnection(function(err, connection){
         connection.query(listofAnimals, function(err, result, fields){
             res.send(result);
-
             console.log(result);
         });
         connection.release();
@@ -270,10 +284,30 @@ exports.animalReport =  function(req, res){
 }
 
 exports.employeeReport =  function(req, res){
-    let listofAnimals = "SELECT * FROM employee";
+    let listofEmployees ;
+
+    if(req.body.EmployeeDepartment !== ""){
+        if(req.body.EmployeeSupervisorId !== "")
+        {
+            listofEmployees = "SELECT * FROM employee WHERE Employee_SupervisorId = '"+req.body.EmployeeSupervisorId+"'"+" && Employee_Department = '"+req.body.EmployeeDepartment+"'";
+        }
+        else
+        {
+            listofEmployees = "SELECT * FROM employee WHERE Employee_Department = '"+req.body.EmployeeDepartment+"'";
+        }
+    }
+    else
+    { 
+        if(req.body.Habitat !== "")
+        {
+            listofEmployees = "SELECT * FROM employee WHERE Employee_SupervisorId = '"+req.body.EmployeeSupervisorId+"'";
+        }
+        else
+        listofEmployees = "SELECT * FROM employee";
+    }
 
     pool.getConnection(function(err, connection){
-        connection.query(listofAnimals, function(err, result, fields){
+        connection.query(listofEmployees, function(err, result, fields){
             res.send(result);
 
             console.log(result);

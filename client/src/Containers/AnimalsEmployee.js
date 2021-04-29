@@ -1,9 +1,8 @@
 import React, {useState} from "react"
 import {useHistory} from "react-router-dom"
 import EmployeeNavBar from "./EmployeeNavBar"
-import "./AnimalsEmployee.css"
 import axios from "axios"
-
+import "./card.css"
 
 export default function Animals(){
     var history = useHistory();
@@ -15,50 +14,15 @@ export default function Animals(){
     const [Habitat, setHabitat] = useState("");
     var [AnimalsArray, setAnimalsArray] = useState([]);
 
-    function getAnimals(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat){
+    function getAnimals(Species, Habitat){
         return axios.post("/api/auth/animalReport", {AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat}).then((response) => {
             setAnimalsArray( response.data);
         });
     }
-
-    function check(id, species, name, dob, gender, habitat){
-        var a = id;
-        var b = species;
-        var c = name;
-        var d = dob;
-        var e = gender;
-        var f = habitat;
-
-        var total = 0;
-
-        if(a.length === 0){
-            a = "";
-        }
-        if(b.length === 0){
-            b = "";
-        }
-        if(c.length === 0){
-            c = "";
-        }
-        if(d.length === 0){
-            d = "";
-        }
-        if(e.length === 0){
-            e = "";
-        }
-        if(f.length === 0){
-            f = "";
-        }
-
-        getAnimals(a, b, c, d, e, f);
-
-        console.log(AnimalsArray);
-    }
     
     function handleSubmit6(event){
         event.preventDefault();
-        check(AnimalId, Species, AnimalName, AnimalDOB, AnimalGender, Habitat);
-        
+        getAnimals(Species, Habitat)
     }
 
 
@@ -68,12 +32,6 @@ export default function Animals(){
             <EmployeeNavBar />
             <h1>Enter the Animal Information for Report</h1>
             <form class="animals" id="animalsform" onSubmit={handleSubmit6}>
-                <label>Animal Id</label>
-                    <input type="text" placeholder="Animal Identification Number" id="Animalid" onChange={(e)=> setAnimalId(e.target.value)}></input>
-                <label>Animal Name</label>
-                    <input type="text" placeholder="Animal's Name Here" id="Animalname" onChange={(e)=> setAnimalName(e.target.value)}></input>
-                <label>Date of Birth</label>
-                    <input type="date" placeholder="12/31/2000" id="Animaldob" onChange={(e)=> setAnimalDOB(e.target.value)}></input>
                 <label>Species</label>
                     <select id="Animalspecies" onChange={(e)=> setSpecies(e.target.value)}>
                         <option value="">Select an Animal</option>  
@@ -97,12 +55,6 @@ export default function Animals(){
                         <option value="Tiger">Tiger</option>
                         <option value="Wolverine">Wolverine</option>
                         <option value="Zebra">Zebra</option>
-                    </select>
-                <label>Sex</label>
-                    <select id="Animalgender" onChange={(e)=> setAnimalGender(e.target.value)}>
-                        <option value="">Select Gender</option>  
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
                     </select>
                 <label>Habitat</label>
                     <select id="habitat" onChange={(e)=> setHabitat(e.target.value)}>
